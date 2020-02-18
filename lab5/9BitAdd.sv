@@ -15,7 +15,7 @@ module carry_select_adder
 	  logic C0, C1;
 	  csa0 FA0(.A(A[3:0]), .B(B[3:0]), .cIn(0), .out(Sum[3:0]), .cout(C0));
 	  csa FA1(.A(A[7:4]), .B(B[7:4]), .cIn(C0), .out(Sum[7:4]), .cout(C1));
-	  full_adder FA2(.x(A[8]), .y(B[8]), .cIn(c1), .s(Sum[8]), .cOut(COUT))
+	  full_adder FA2(.x(A[8]), .y(B[8]), .cIn(c1), .s(Sum[8]), .cOut(COUT));
 	  
 	  
 	    
@@ -26,7 +26,7 @@ endmodule
 
 module csa0(input [3:0] A, input [3:0] B, input cIn, output logic [3:0] out, output logic cout);
 
-	four_bit_adder FA0(.x(A[3:0]), .y(B[3:0]), .cIn(0), .s(out), .cOut(cout));
+	four_bit_adder bruh(.x(A[3:0]), .y(B[3:0]), .cIn(0), .s(out), .cOut(cout));
 
 	
 endmodule
@@ -49,7 +49,7 @@ module csa(input [3:0] A, input [3:0] B, input cIn, output logic [3:0] out, outp
 	logic c1;
 	logic [3:0] o2;
 	
-	four_bit_adder FA0(.x(A[3:0]), .y(B[3:0]), .cIn(0), .s(o1), .cOut(c1));
+	four_bit_adder FA1(.x(A[3:0]), .y(B[3:0]), .cIn(0), .s(o1), .cOut(c1));
 	
 	
 	
