@@ -1,4 +1,25 @@
+module carry_select_adder
+(
+    input   logic[8:0]     A,
+    input   logic[8:0]     B,
+    output  logic[8:0]     Sum,
+    output  logic           COUT
+);
 
+    /* TODO
+     *
+     * Insert code here to implement a carry select.
+     * Your code should be completly combinational (don't use always_ff or always_latch).
+     * Feel free to create sub-modules or other files. */
+	  
+	  logic C0, C1;
+	  csa0 FA0(.A(A[3:0]), .B(B[3:0]), .cIn(0), .out(Sum[3:0]), .cout(C0));
+	  csa FA1(.A(A[7:4]), .B(B[7:4]), .cIn(C0), .out(Sum[7:4]), .cout(C1));
+	  full_adder FA2(.x(A[8]), .y(B[8]), .cIn(c1), .s(Sum[8]), .cOut(COUT))
+	  
+	  
+	    
+endmodule
 
 
 
@@ -16,7 +37,7 @@ module csa(input [3:0] A, input [3:0] B, input cIn, output logic [3:0] out, outp
 	
 	//carry0
 	
-	logic c0
+	logic c0;
 	logic [3:0] o0;
 	
 	four_bit_adder FA0(.x(A[3:0]), .y(B[3:0]), .cIn(0), .s(o0), .cOut(c0));
@@ -25,7 +46,7 @@ module csa(input [3:0] A, input [3:0] B, input cIn, output logic [3:0] out, outp
 	
 	
 	//carry1
-	logic c1
+	logic c1;
 	logic [3:0] o2;
 	
 	four_bit_adder FA0(.x(A[3:0]), .y(B[3:0]), .cIn(0), .s(o1), .cOut(c1));
@@ -35,12 +56,12 @@ module csa(input [3:0] A, input [3:0] B, input cIn, output logic [3:0] out, outp
 	always_comb
 	begin
 	if(cIn == 0) begin
-		 out = o1;
-		 cout = c6;
+		 out = o0;
+		 cout = c0;
 	end
 	else begin
-		 out = o2;
-		 cout = c7;
+		 out = o1;
+		 cout = c1;
 	end
 	end
 	//this syntax sucks so much ass
