@@ -1,4 +1,4 @@
-module lab4_adders_toplevel
+module top
 (
     input   logic           Clk,        // 50MHz clock is only used to get timing estimate data
     input   logic           Reset,      // From push-button 0.  Remember the button is active low (0 when pressed)
