@@ -3,7 +3,7 @@ module reg_8 (input  logic Clk, Reset, Shift_In, Load, Shift_En,
               output logic Shift_Out,
               output logic [7:0]  Data_Out);
 
-    always_ff @ (posedge Clk)
+    always_ff @ (negedge Clk)
     begin
 	 	 if (Reset) //notice, this is a sycnrhonous reset, which is recommended on the FPGA
 			  Data_Out <= 8'h0;

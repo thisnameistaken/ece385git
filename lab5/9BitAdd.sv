@@ -2,8 +2,9 @@ module carry_select_adder
 (
     input   logic[8:0]     A,
     input   logic[8:0]     B,
-    output  logic[8:0]     Sum,
-    output  logic           COUT
+    output  logic[7:0]     Sum,
+    output  logic          cOut
+	 output logic				X
 );
 
     /* TODO
@@ -15,7 +16,7 @@ module carry_select_adder
 	  logic C0, C1;
 	  csa0 FA0(.A(A[3:0]), .B(B[3:0]), .cIn(0), .out(Sum[3:0]), .cout(C0));
 	  csa FA1(.A(A[7:4]), .B(B[7:4]), .cIn(C0), .out(Sum[7:4]), .cout(C1));
-	  full_adder FA2(.x(A[8]), .y(B[8]), .cIn(c1), .s(Sum[8]), .cOut(COUT));
+	  full_adder FA2(.x(A[8]), .y(B[8]), .cIn(c1), .s(X), .cOut(cOut));
 	  
 	  
 	    
@@ -64,7 +65,6 @@ module csa(input [3:0] A, input [3:0] B, input cIn, output logic [3:0] out, outp
 		 cout = c1;
 	end
 	end
-	//this syntax sucks so much ass
 	
 	
 	
