@@ -121,8 +121,8 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, input logic [7:0] B,
 						end
 					end
         end 
-		  end
 		  endcase
+		  end
 	always_comb
     begin		  
 		  
