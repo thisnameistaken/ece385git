@@ -1,8 +1,8 @@
 module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
-					 output logic Clr_Ld, Shift, Add, Sub); //Control unit
+					 output logic Clr_Ld, Shift, Add, Sub, X, clearA); //Control unit
 					 
-	enum logic [3:0] {A, ADD, B, C, D, E, F, G, H, I, J} curr_state, next_state; //Logic for control unit states/counter
-	
+	enum logic [3:0] {A, ADD, SUB, B, C, D, E, F, G, H, I, J} curr_state, next_state; //Logic for control unit states/counter
+	logic MS = B[7];
 	logic [3:0] temp;
 	
 	always_ff @ (posedge Clk)
@@ -19,12 +19,17 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
 		  next_state  = curr_state;	//required because I haven't enumerated all possibilities below
         unique case (curr_state) 
 
-            A :    if (Run)
-                       next_state = B;
+            A :    if (Run) begin
+							  X = 0; 
+							  next_state = B;
+							  clearA = 1;
+						  
 							  
 				ADD:		next_state = temp;
+				SUB:		next_state = J;
 				
-            B :    if(B[0]) begin
+            B :    clearA = 0;
+						 if(B[0]) begin
 							temp = C;
 							next_state = ADD;
 							end
@@ -80,9 +85,9 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
 							next_state = I;
 						 end
 						 
-				I : 	 if(B[0]) begin
+				I : 	 if(MS) begin
 							temp = J;
-							next_state = ADD;
+							next_state = SUB;
 							end
 						 else begin
 							next_state = J;
@@ -108,10 +113,22 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
 					 Add = 1'b0;
 					 Sub = 1'b0;
 		      end
+				
+				I: //Possible Subtraction state
+				begin 
+					if(MS)
+						Sub = 1'b1;
+						Shift = 1'b0;
+					else
+						Sub = 1'b0;
+						Shift = 1'b1;
+		      end
+				
 	   	   J: //Last state. Clear X and A
 		      begin
                 Shift = 1'b0;
 					 Add = 1'b0;
+					 Sub = 1'b0;
 		      end
 				ADD:
 				begin
