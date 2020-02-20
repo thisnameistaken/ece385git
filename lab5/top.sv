@@ -37,7 +37,18 @@ control c_unit(
 carry_select_adder adder_unit();
 
 
-
+HexDriver        HexAL (
+                        .In0(A[3:0]),
+                        .Out0(AhexL) );
+HexDriver        HexBL (
+                        .In0(B[3:0]),
+                        .Out0(BhexL) );
+HexDriver        HexAU (
+                        .In0(A[6:3]),
+                        .Out0(AhexU) );
+HexDriver        HexBU (
+                        .In0(B[6:3]),
+                        .Out0(BhexU) );
 
 
 

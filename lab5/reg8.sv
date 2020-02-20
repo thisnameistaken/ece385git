@@ -1,4 +1,4 @@
-module reg_8 (input  logic Clk, Reset, Shift_In, Load, Shift_En,
+module reg_8 (input  logic Clk, Reset, Shift_In, Load, Shift,
               input  logic [7:0]  D,
               output logic Shift_Out,
               output logic [7:0]  Data_Out);
@@ -9,7 +9,7 @@ module reg_8 (input  logic Clk, Reset, Shift_In, Load, Shift_En,
 			  Data_Out <= 8'h0;
 		 else if (Load)
 			  Data_Out <= D;
-		 else if (Shift_En)
+		 else if (Shift)
 		 begin
 			  //concatenate shifted in data to the previous left-most 3 bits
 			  //note this works because we are in always_ff procedure block
