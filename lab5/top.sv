@@ -18,20 +18,20 @@ module top
 );
 
 register_unit reg_unit(
-							.Clk(Clk)
-							.Reset()
+							.Clk(Clk),
+							.Reset(),
 							);
 
 control c_unit(
-				.Clk(Clk)
-				.Reset()
-				.Run()
-				.ClearA_LoadB()
-				.B()
-				.Clr_Ld()
-				.Shift()
-				.Add()
-				.Sub()
+				.Clk(Clk),
+				.Reset(),
+				.Run(),
+				.ClearA_LoadB(),
+				.B(),
+				.Clr_Ld(),
+				.Shift(),
+				.Add(),
+				.Sub(),
 				);
 
 carry_select_adder adder_unit();
