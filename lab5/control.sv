@@ -20,8 +20,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
 
             A :  	  if (Run) 
 							  next_state = B;
-						  else
-								next_state = A;
 					  
             B : begin
 						 if(Bin[0]) begin						 
