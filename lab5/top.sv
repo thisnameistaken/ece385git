@@ -1,4 +1,4 @@
-module lab4_adders_toplevel
+module top
 (
     input   logic           Clk,        // 50MHz clock is only used to get timing estimate data
     input   logic           Reset,      // From push-button 0.  Remember the button is active low (0 when pressed)
@@ -23,6 +23,7 @@ logic x, add, sub, shift, clr_A, a_out, b_out, clr, cOut;
 
 register_unit reg_unit(
 							.Clk(Clk),
+<<<<<<< HEAD
 							.Reset(Reset_SH), //Button
 							.X(x),
 							.Add(add), 
@@ -36,10 +37,14 @@ register_unit reg_unit(
 							.B_out(b_out),
 							.A(A),
 							.B(B)
+=======
+							.Reset()
+>>>>>>> 9eb7ff3ea75900aca39e99f23240c268b667bb17
 							);
 
 control c_unit(
 				.Clk(Clk),
+<<<<<<< HEAD
 				.Reset(Reset_SH), //Button
 				.Run(Run_SH), //Button
 				.ClearA_LoadB(ClrA_LdB), 
@@ -51,6 +56,16 @@ control c_unit(
 				.Sub(sub),
 				.X(x),
 				.clearA(clr_A)
+=======
+				.Reset(),
+				.Run(),
+				.ClearA_LoadB(),
+				.B(),
+				.Clr_Ld(),
+				.Shift(),
+				.Add(),
+				.Sub()
+>>>>>>> 9eb7ff3ea75900aca39e99f23240c268b667bb17
 				);
 
 carry_select_adder adder_unit(
