@@ -17,24 +17,50 @@ module lab4_adders_toplevel
 	 output  logic           X
 );
 
+logic Reset_SH, ClrA_LdB, Run_SH;
+logic [7:0] A, B, Din_S, sum;
+logic x, add, sub, shift, clr_A, a_out, b_out, clr, cOut;
+
 register_unit reg_unit(
-							.Clk(Clk)
-							.Reset()
-							.);
+							.Clk(Clk),
+							.Reset(Reset_SH), //Button
+							.X(x),
+							.Add(add), 
+							.Clr_Ld(clr),
+							.Shift(shift),
+							.ClearA(clr_A),
+							.aout(a_out),
+							.Ain(sum),
+							.Bin(Din_S), //Switches
+							.A_out(a_out),
+							.B_out(b_out),
+							.A(A),
+							.B(B)
+							);
 
 control c_unit(
-				.Clk(Clk)
-				.Reset()
-				.Run()
-				.ClearA_LoadB()
-				.B()
-				.Clr_Ld()
-				.Shift()
-				.Add()
-				.Sub()
+				.Clk(Clk),
+				.Reset(Reset_SH), //Button
+				.Run(Run_SH), //Button
+				.ClearA_LoadB(ClrA_LdB), //Button
+				.Bin(B),
+				.Clr_Ld(clr),
+				.Shift(shift),
+				.Add(add),
+				.Sub(sub),
+				.X(x),
+				.clearA(clr_A)
 				);
 
-carry_select_adder adder_unit();
+carry_select_adder adder_unit(
+									.A(A),
+									.B(Din_S),
+									.A9(A[7]),
+									.B9(Din_S[7]),
+									.Sum(sum),
+									.cOut(cOut),
+									.X(x)
+									);
 
 
 HexDriver        HexAL (
@@ -51,10 +77,11 @@ HexDriver        HexBU (
                         .Out0(BhexU) );
 
 
+	  //Input synchronizers required for asynchronous inputs (in this case, from the switches)
+	  //These are array module instantiations
+	  //Note: S stands for SYNCHRONIZED, H stands for active HIGH
+	  //Note: We can invert the levels inside the port assignments
+	  sync button_sync[3:0] (Clk, {~Reset, ~ClearA_LoadB, ~Run}, {Reset_SH, ClrA_LdB, Run_SH});
+	  sync Din_sync[7:0] (Clk, Din, Din_S);
 
-
-
-
-
-
-endmodule
+endmodule 

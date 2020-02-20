@@ -2,8 +2,9 @@ module carry_select_adder
 (
     input   logic[8:0]     A,
     input   logic[8:0]     B,
+	 input   logic 			A9, B9,
     output  logic[7:0]     Sum,
-    output  logic          cOut
+    output  logic          cOut,
 	 output logic				X
 );
 
@@ -16,7 +17,7 @@ module carry_select_adder
 	  logic C0, C1;
 	  csa0 FA0(.A(A[3:0]), .B(B[3:0]), .cIn(0), .out(Sum[3:0]), .cout(C0));
 	  csa FA1(.A(A[7:4]), .B(B[7:4]), .cIn(C0), .out(Sum[7:4]), .cout(C1));
-	  full_adder FA2(.x(A[8]), .y(B[8]), .cIn(c1), .s(X), .cOut(cOut));
+	  full_adder FA2(.x(A9), .y(B9), .cIn(c1), .s(X), .cOut(cOut));
 	  
 	  
 	    
