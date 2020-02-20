@@ -54,7 +54,7 @@ control c_unit(
 				.Add(add),
 				.Sub(sub),
 				.X(x),
-				.clearA(clr_A)
+				.ClearA(clr_A)
 				);
 
 carry_select_adder adder_unit(
@@ -86,7 +86,7 @@ HexDriver        HexBU (
 	  //These are array module instantiations
 	  //Note: S stands for SYNCHRONIZED, H stands for active HIGH
 	  //Note: We can invert the levels inside the port assignments
-	  sync button_sync[3:0] (Clk, {~Reset, ~ClearA_LoadB, ~Run}, {Reset_SH, ClrA_LdB, Run_SH});
+	  sync button_sync[2:0] (Clk, {~Reset, ~ClearA_LoadB, ~Run}, {Reset_SH, ClrA_LdB, Run_SH});
 	  sync Din_sync[7:0] (Clk, S, Din_S);
 
 endmodule 
