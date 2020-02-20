@@ -93,9 +93,9 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
 							next_state = J;
 						 end
 						 
-            J :    if (~Run) 
+            J :    if (~Run) begin 
                        next_state = A;
-							  
+						end
         endcase
 		  
         case (curr_state) 
@@ -116,12 +116,14 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
 				
 				I: //Possible Subtraction state
 				begin 
-					if(MS)
+					if(MS) begin
 						Sub = 1'b1;
 						Shift = 1'b0;
-					else
+						end
+					else begin
 						Sub = 1'b0;
 						Shift = 1'b1;
+					end
 		      end
 				
 	   	   J: //Last state. Clear X and A
@@ -139,13 +141,14 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
 				
 	   	   default:  //Default state. Checks whether to add or shift
 		      begin 
-					if(B[0])
+					if(B[0]) begin
 						Add = 1'b1;
 						Shift = 1'b0;
-					else
+					end
+					else begin
 						Add = 1'b0;
 						Shift = 1'b1;
-		      end
+					end
         endcase
     end
 
