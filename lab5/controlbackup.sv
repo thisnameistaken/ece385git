@@ -27,7 +27,7 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, input logic [7:0] B,
 							  next_state = Bstate;
 							  clearA = 1;
 						end
-						begin
+						
 						  
 							  
 				ADD:		next_state = temp;
