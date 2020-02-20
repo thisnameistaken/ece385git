@@ -1,4 +1,4 @@
-A//4-bit logic processor top level module
+//4-bit logic processor top level module
 //for use with ECE 385 Fall 2016
 //last modified by Zuofu Cheng
 

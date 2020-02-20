@@ -1,4 +1,4 @@
-module lab4_adders_toplevel
+module top
 (
     input   logic           Clk,        // 50MHz clock is only used to get timing estimate data
     input   logic           Reset,      // From push-button 0.  Remember the button is active low (0 when pressed)
@@ -20,6 +20,10 @@ module lab4_adders_toplevel
 logic Reset_SH, ClrA_LdB, Run_SH;
 logic [7:0] A, B, Din_S, sum;
 logic x, add, sub, shift, clr_A, a_out, b_out, clr, cOut;
+
+assign Aval = A;
+assign Bval = B;
+assign LED = {Reset_SH, ClrA_LdB, Run_SH};
 
 register_unit reg_unit(
 							.Clk(Clk),
@@ -83,6 +87,6 @@ HexDriver        HexBU (
 	  //Note: S stands for SYNCHRONIZED, H stands for active HIGH
 	  //Note: We can invert the levels inside the port assignments
 	  sync button_sync[3:0] (Clk, {~Reset, ~ClearA_LoadB, ~Run}, {Reset_SH, ClrA_LdB, Run_SH});
-	  sync Din_sync[7:0] (Clk, Din, Din_S);
+	  sync Din_sync[7:0] (Clk, S, Din_S);
 
 endmodule 
