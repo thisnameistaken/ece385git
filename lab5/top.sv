@@ -19,7 +19,7 @@ module top
 
 register_unit reg_unit(
 							.Clk(Clk),
-							.Reset(),
+							.Reset()
 							);
 
 control c_unit(
@@ -31,7 +31,7 @@ control c_unit(
 				.Clr_Ld(),
 				.Shift(),
 				.Add(),
-				.Sub(),
+				.Sub()
 				);
 
 carry_select_adder adder_unit();
