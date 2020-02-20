@@ -17,6 +17,25 @@ module lab4_adders_toplevel
 	 output  logic           X
 );
 
+register_unit reg_unit(
+							.Clk(Clk)
+							.Reset()
+							.);
+
+control c_unit(
+				.Clk(Clk)
+				.Reset()
+				.Run()
+				.ClearA_LoadB()
+				.B()
+				.Clr_Ld()
+				.Shift()
+				.Add()
+				.Sub()
+				);
+
+carry_select_adder adder_unit();
+
 
 
 
