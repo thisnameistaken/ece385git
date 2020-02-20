@@ -3,7 +3,7 @@ module carry_select_adder
     input   logic[8:0]     A,
     input   logic[8:0]     B,
     output  logic[7:0]     Sum,
-    output  logic          cOut
+    output  logic          cOut,
 	 output logic				X
 );
 

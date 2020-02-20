@@ -20,7 +20,7 @@ module lab4_adders_toplevel
 register_unit reg_unit(
 							.Clk(Clk)
 							.Reset()
-							.);
+							);
 
 control c_unit(
 				.Clk(Clk)

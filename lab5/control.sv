@@ -1,16 +1,18 @@
-module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
+module control (input logic Clk, Reset, Run, ClearA_LoadB, input logic [7:0] B,
 					 output logic Clr_Ld, Shift, Add, Sub, X, clearA); //Control unit
 					 
-	enum logic [3:0] {A, ADD, SUB, B, C, D, E, F, G, H, I, J} curr_state, next_state; //Logic for control unit states/counter
+	enum logic [3:0] {A, ADD, SUB, Bstate, C, D, E, F, G, H, I, J} curr_state, next_state; //Logic for control unit states/counter
 	logic MS = B[7];
 	logic [3:0] temp;
 	
 	always_ff @ (posedge Clk)
 	begin
-	if (Reset)
+	if (Reset) begin
 		curr_state <= A;
-	else
+		end
+	else begin
 		curr_state <= next_state;
+		end
 	end
 		
 	always_comb
@@ -19,16 +21,20 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
 		  next_state  = curr_state;	//required because I haven't enumerated all possibilities below
         unique case (curr_state) 
 
-            A :    if (Run) begin
+            A :   begin
+						if (Run) begin
 							  X = 0; 
-							  next_state = B;
+							  next_state = Bstate;
 							  clearA = 1;
+						end
+						begin
 						  
 							  
 				ADD:		next_state = temp;
 				SUB:		next_state = J;
 				
-            B :    clearA = 0;
+            Bstate : begin  
+							clearA = 0;
 						 if(B[0]) begin
 							temp = C;
 							next_state = ADD;
@@ -36,68 +42,91 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
 						 else begin
 							next_state = C;
 						 end
+				end
 						 
-            C :    if(B[0]) begin
+            C :    begin
+							if(B[0]) begin
 							temp = D;
 							next_state = ADD;
 							end
 						 else begin
 							next_state = D;
 						 end
+					end
 						 
-            D :    if(B[0]) begin
+            D :    begin
+						if(B[0]) begin
 							temp = E;
 							next_state = ADD;
 							end
 						 else begin
 							next_state = E;
 						 end
+					end
 						 
-            E :    if(B[0]) begin
+            E :    begin 
+				
+					if(B[0]) begin
 							temp = F;
 							next_state = ADD;
 							end
 						 else begin
 							next_state = G;
 						 end
+					end
 						 
-				F :    if(B[0]) begin
+				F :   begin 
+						if(B[0]) begin
 							temp = G;
 							next_state = ADD;
 							end
 						 else begin
 							next_state = G;
 						 end
+					end
 						 
-            G :    if(B[0]) begin
+            G :   begin
+						if(B[0]) begin
 							temp = H;
 							next_state = ADD;
 							end
 						 else begin
 							next_state = H;
 						 end
+					end
 						 
-				H : 	 if(B[0]) begin
+				H : 	begin
+					if(B[0]) begin
 							temp = I;
 							next_state = ADD;
 							end
 						 else begin
 							next_state = I;
 						 end
+					end
 						 
-				I : 	 if(MS) begin
+				I : 	begin
+						if(MS) begin
 							temp = J;
 							next_state = SUB;
 							end
 						 else begin
 							next_state = J;
 						 end
+					end
 						 
-            J :    if (~Run) begin 
+            J :   begin
+					if (~Run) begin 
                        next_state = A;
 						end
-        endcase
+					end
+        end 
+		  end
+		  endcase
+	always_comb
+    begin		  
 		  
+	 
         case (curr_state) 
 	   	   A: //Rest state. Set everything to zero
 	         begin
@@ -149,7 +178,7 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
 						Add = 1'b0;
 						Shift = 1'b1;
 					end
-        endcase
+        end
+    endcase
     end
-
 endmodule

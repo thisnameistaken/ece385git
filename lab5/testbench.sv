@@ -37,7 +37,7 @@ end
 initial begin: TEST_VECTORS
 Reset = 0;		// reset system
 Run = 1;			// keep run low
-Continue = 1
+Continue = 1;
 
 #2 Reset = 1;		// stop reset
 	
