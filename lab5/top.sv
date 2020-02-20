@@ -42,7 +42,8 @@ control c_unit(
 				.Clk(Clk),
 				.Reset(Reset_SH), //Button
 				.Run(Run_SH), //Button
-				.ClearA_LoadB(ClrA_LdB), //Button
+				.ClearA_LoadB(ClrA_LdB), 
+				.x_in(x),
 				.Bin(B),
 				.Clr_Ld(clr),
 				.Shift(shift),

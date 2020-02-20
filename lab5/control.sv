@@ -1,4 +1,4 @@
-module control (input logic Clk, Reset, Run, ClearA_LoadB, 
+module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
 					 input logic [7:0] Bin,
 					 output logic Clr_Ld, Shift, Add, Sub, X, ClearA); //Control unit
 					 
@@ -134,48 +134,90 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB,
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
+					 X = 1'b0;
+					 ClearA = 1'b1;
 					end  
 				else if (Run) begin
-						X = 1'b0;
-						ClearA = 1'b1;
+					 Clr_Ld = 1'b0;
+                Shift  = 1'b0;
+					 Add = 1'b0;
+					 Sub = 1'b0;
+					 X = 1'b0;
+					 ClearA = 1'b0;
 					end
 				else
                 Clr_Ld = ClearA_LoadB;
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
+					 X = x_in;
+					 ClearA = 1'b0;
 		      end
 				
 				B, D, F, H, J, L, N: begin
 					if (Bin[0]) begin
-						ClearA = 0;
-						Add = 1'b1;
-						Shift = 1'b0;
+                Clr_Ld = 1'b0;
+                Shift  = 1'b0;
+					 Add = 1'b1;
+					 Sub = 1'b0;
+					 X = x_in;
+					 ClearA = 1'b0;
 					end
+					else begin
+					 Clr_Ld = 1'b0;
+                Shift  = 1'b1;
+					 Add = 1'b0;
+					 Sub = 1'b0;
+					 X = x_in;
+					 ClearA = 1'b0;
+					 end
 				end
 				
 				C, E, G, I, K, M, O: begin
-						Add = 1'b0;
-						Shift = 1'b1;					
+                Clr_Ld = 1'b0;
+                Shift  = 1'b1;
+					 Add = 1'b0;
+					 Sub = 1'b0;
+					 X = x_in;
+					 ClearA = 1'b0;					
 				end
 				
 				P: begin
 					if(Bin[0]) begin
-						Sub = 1'b1;
-						Shift = 1'b0;
-					end
+                Clr_Ld = 1'b0;
+                Shift  = 1'b0;
+					 Add = 1'b0;
+					 Sub = 1'b1;
+					 X = x_in;
+					 ClearA = 1'b0;
+					 end
+					 else begin
+                Clr_Ld = 1'b0;
+                Shift  = 1'b1;
+					 Add = 1'b0;
+					 Sub = 1'b0;
+					 X = x_in;
+					 ClearA = 1'b0;					 
+					 end
 				end
 				
 				Q: begin
-						Sub = 1'b0;
-						Shift = 1'b1;
+                Clr_Ld = 1'b0;
+                Shift  = 1'b1;
+					 Add = 1'b0;
+					 Sub = 1'b0;
+					 X = x_in;
+					 ClearA = 1'b0;	
 					end
 				
 	   	   R: //Last state
 		      begin
-                Shift = 1'b0;
+                Clr_Ld = 1'b0;
+                Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
+					 X = x_in;
+					 ClearA = 1'b0;	
 		      end	
 				
         endcase
