@@ -1,5 +1,5 @@
 module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
-					 output logic Clr_Ld, Shift, Add, Sub, Clr_XA); //Control unit
+					 output logic Clr_Ld, Shift, Add, Sub); //Control unit
 					 
 	enum logic [3:0] {A, ADD, B, C, D, E, F, G, H, I, J} curr_state, next_state; //Logic for control unit states/counter
 	
@@ -107,11 +107,9 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, [7:0] B,
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 Clr_XA = 1'b0;
 		      end
 	   	   J: //Last state. Clear X and A
 		      begin
-					 Clr_XA = 1'b1;
                 Shift = 1'b0;
 					 Add = 1'b0;
 		      end
