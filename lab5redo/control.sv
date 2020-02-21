@@ -1,7 +1,7 @@
 module control (input logic Clk, Reset, Run, ClearA_LoadB,
 					 input logic [7:0] Bin,
 					 output logic Clr_Ld, Shift, Add, Sub, ClearA); //Control unit
-					 
+	//x should not appear at all in this file 				 
 	enum logic [4:0] {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R} curr_state, next_state; //Logic for control unit states/counter
 	
 	always_ff @ (posedge Clk)
