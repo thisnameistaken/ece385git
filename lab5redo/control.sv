@@ -1,6 +1,6 @@
-module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
+module control (input logic Clk, Reset, Run, ClearA_LoadB,
 					 input logic [7:0] Bin,
-					 output logic Clr_Ld, Shift, Add, Sub, X, ClearA); //Control unit
+					 output logic Clr_Ld, Shift, Add, Sub, ClearA); //Control unit
 					 
 	enum logic [4:0] {A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R} curr_state, next_state; //Logic for control unit states/counter
 	
@@ -131,7 +131,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 X = 1'b0;
 					 ClearA = 1'b1;
 					end  
 				else if (Run) begin
@@ -139,7 +138,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 X = 1'b0;
 					 ClearA = 1'b1;
 					end
 				else
@@ -147,7 +145,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 X = x_in;
 					 ClearA = ClearA_LoadB;
 		      end
 				
@@ -157,7 +154,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b0;
 					 Add = 1'b1;
 					 Sub = 1'b0;
-					 X = x_in;
 					 ClearA = 1'b0;
 					end
 					else begin
@@ -165,7 +161,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b1;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 X = x_in;
 					 ClearA = 1'b0;
 					 end
 				end
@@ -175,7 +170,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b1;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 X = x_in;
 					 ClearA = 1'b0;					
 				end
 				
@@ -185,7 +179,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b1;
-					 X = x_in;
 					 ClearA = 1'b0;
 					 end
 					 else begin
@@ -193,7 +186,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b1;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 X = x_in;
 					 ClearA = 1'b0;					 
 					 end
 				end
@@ -203,7 +195,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b1;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 X = x_in;
 					 ClearA = 1'b0;	
 					end
 				
@@ -213,7 +204,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 X = x_in;
 					 ClearA = 1'b0;	
 		      end	
 				

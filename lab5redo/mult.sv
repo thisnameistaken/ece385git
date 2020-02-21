@@ -1,6 +1,6 @@
 module mult
 (
-    input   logic           Clock,        // 50MHz clock is only used to get timing estimate data
+    input   logic           Clk,        // 50MHz clock is only used to get timing estimate data
     input   logic           Reset,      // From push-button 0.  Remember the button is active low (0 when pressed)
     input   logic           ClearA_LoadB,      // From push-button 1
     input   logic           Run,        // From push-button 3.
@@ -24,17 +24,33 @@ logic [7:0] B;
 logic [7:0] Sin;
 
 
+logic add, sub, shift, clr_A, a_out, b_out, clr, cOut;
+
+
 logic [8:0] Sum;
 logic [8:0] SextA;
 
+sex extA(.in(A), .out(SextA)); // sign extend A
+sex extS(.in(Din_S), .out(Din_S));
+
+logic Reset_SH, ClrA_LdB, Run_SH; //buttons from sync
 
 
-sex extA(.in(A), .out(SextA));
+
+calc domath(.A(SextA), .B(SextS), .opp(sub), .Ans(Sum)); //2s complement add subtract
 
 
-
-
-
+control doyourjob(.Clk(Clk), 
+						.Reset(Reset_SH), 
+						.Run(Run_SH), 
+						.ClearA_LoadB(ClrA_LdB), 
+						.Bin(B), 
+						.Clr_Ld(clr), 
+						.Shift(shift),
+						.Add(add),
+						.Sub(sub),
+						.ClearA(clr_A)
+						);
 
 
 
