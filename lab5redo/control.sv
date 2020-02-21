@@ -46,18 +46,24 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB,
         case (curr_state) 
 	   	   A: //Rest state. Set everything to zero
 	         begin
+				if (Reset) 
+					begin 
+					 Clr_Ld = 1'b0;
+                Shift  = 1'b0;
+					 Add = 1'b0;
+					 Sub = 1'b0;
+					end  
 				else if (Run) begin
 					 Clr_Ld = 1'b0;
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
 					end
-				else begin
+				else
                 Clr_Ld = ClearA_LoadB;
                 Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
-					 end
 		      end
 				
 				B, D, F, H, J, L, N: begin

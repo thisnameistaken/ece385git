@@ -149,11 +149,8 @@ set_global_assignment -name SYSTEMVERILOG_FILE mult.sv
 set_global_assignment -name SYSTEMVERILOG_FILE HexDriver.sv
 set_global_assignment -name SYSTEMVERILOG_FILE FA.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 4A.sv
-set_global_assignment -name SYSTEMVERILOG_FILE csa.sv
-set_global_assignment -name SYSTEMVERILOG_FILE csa0.sv
 set_global_assignment -name SYSTEMVERILOG_FILE 9bitadder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE reg8.sv
-set_global_assignment -name SYSTEMVERILOG_FILE calc.sv
 set_global_assignment -name SYSTEMVERILOG_FILE Synchronizers.sv
 set_global_assignment -name SYSTEMVERILOG_FILE control.sv
 set_global_assignment -name SYSTEMVERILOG_FILE reg1.sv

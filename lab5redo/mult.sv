@@ -41,7 +41,7 @@ sex extS(.in(Din_S), .out(SextS)); // sign extend S
 
 
 
-calc domath(.A(A), .B(Din_S), .opp(sub), .Ans(Sum)); //2s complement add subtract
+adder domath(.A(A), .B(Din_S), .opp(sub), .Ans(Sum)); //2s complement add subtract
 
 
 control doyourjob(.Clk(Clk), 
