@@ -20,8 +20,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
 
             A :  	  if (Run) 
 							  next_state = B;
-						  else
-								next_state = A;
 					  
             B : begin
 						 if(Bin[0]) begin						 
@@ -121,7 +119,6 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
 						 
             R:    if (~Run) 
                        next_state = A;
-					    else next_state = B;
 							  
         endcase
 		  
@@ -143,7 +140,7 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
 					 Add = 1'b0;
 					 Sub = 1'b0;
 					 X = 1'b0;
-					 ClearA = 1'b0;
+					 ClearA = 1'b1;
 					end
 				else
                 Clr_Ld = ClearA_LoadB;
@@ -151,7 +148,7 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB, x_in,
 					 Add = 1'b0;
 					 Sub = 1'b0;
 					 X = x_in;
-					 ClearA = 1'b0;
+					 ClearA = ClearA_LoadB;
 		      end
 				
 				B, D, F, H, J, L, N: begin

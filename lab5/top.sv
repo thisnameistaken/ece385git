@@ -19,16 +19,16 @@ module top
 
 logic Reset_SH, ClrA_LdB, Run_SH;
 logic [7:0] A, B, Din_S, sum;
-logic x, add, sub, shift, clr_A, a_out, b_out, clr, cOut;
+logic x1, x2, add, sub, shift, clr_A, a_out, b_out, clr, cOut;
 
 assign Aval = A;
 assign Bval = B;
-assign LED = {Reset_SH, ClrA_LdB, Run_SH};
 
 register_unit reg_unit(
 							.Clk(Clk),
 							.Reset(Reset_SH), //Button
-							.X(x),
+							.x1(x1),
+							.x2(x2),
 							.Add(add), 
 							.Clr_Ld(clr),
 							.Shift(shift),
@@ -38,6 +38,7 @@ register_unit reg_unit(
 							.Bin(Din_S), //Switches
 							.A_out(a_out),
 							.B_out(b_out),
+							.X_out(x2),
 							.A(A),
 							.B(B)
 							);
@@ -47,13 +48,13 @@ control c_unit(
 				.Reset(Reset_SH), //Button
 				.Run(Run_SH), //Button
 				.ClearA_LoadB(ClrA_LdB), 
-				.x_in(x),
+				.x_in(x2),
 				.Bin(B),
 				.Clr_Ld(clr),
 				.Shift(shift),
 				.Add(add),
 				.Sub(sub),
-				.X(x),
+				.X(x1),
 				.ClearA(clr_A)
 				);
 
@@ -64,7 +65,7 @@ carry_select_adder adder_unit(
 									.B9(Din_S[7]),
 									.Sum(sum),
 									.cOut(cOut),
-									.X(x)
+									.X(x1)
 									);
 
 
@@ -75,10 +76,10 @@ HexDriver        HexBL (
                         .In0(B[3:0]),
                         .Out0(BhexL) );
 HexDriver        HexAU (
-                        .In0(A[6:3]),
+                        .In0(A[7:4]),
                         .Out0(AhexU) );
 HexDriver        HexBU (
-                        .In0(B[6:3]),
+                        .In0(B[7:4]),
                         .Out0(BhexU) );
 
 
