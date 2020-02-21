@@ -21,17 +21,21 @@ module mult
 
 logic [7:0] A;
 logic [7:0] B;
-logic [7:0] Sin;
+logic [7:0] Din_S;
 
 
-logic add, sub, shift, clr_A, a_out, b_out, clr, cOut;
+assign Aval = A;
+assign Bval = B;
+
+
+logic add, sub, shift, clr_A, a_out, b_out, clr;
 
 
 logic [8:0] Sum;
 logic [8:0] SextA;
 
 sex extA(.in(A), .out(SextA)); // sign extend A
-sex extS(.in(Din_S), .out(Din_S));
+sex extS(.in(Din_S), .out(SextS)); // sign extend S
 
 logic Reset_SH, ClrA_LdB, Run_SH; //buttons from sync
 
@@ -52,14 +56,49 @@ control doyourjob(.Clk(Clk),
 						.ClearA(clr_A)
 						);
 
+						
+						
+						
+						
+
+reg_8 ReggieA(.Clk(Clk), 
+				  .Reset(Reset_SH || clr_A), 
+				  .Shift_In(X), 
+				  .Load(add || sub), 
+				  .D(Sum[7:0]), 
+				  .Shift_Out(a_out),
+				  .Data_Out(A)
+				  );
+				  
+
+
+
+reg_8 ReggieBruh(.Clk(Clk), 
+				  .Reset(Reset), 
+				  .Shift_In(a_out), 
+				  .Load(clr), 
+				  .D(Din_S), 
+				  .Shift_Out(b_out),
+				  .Data_Out(B)
+				  );
 
 
 
 
 
-
-
-
+reg_1 XGamesRedBull(.Clk(Clk), 
+						  .Reset(clr_A|| Reset_SH),
+						  .Load(add || sub),
+						  .D(Sum[8]),
+						  .Data_Out(X)
+						  );						
+						
+						
+						
+						
+						
+						
+						
 
 HexDriver        HexAL (
                         .In0(A[3:0]),
