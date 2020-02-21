@@ -1,13 +1,15 @@
 module calc(
-	input logic[8:0] A,
-	input logic[8:0] B,
+	input logic[7:0] A,
+	input logic[7:0] B,
 	input logic opp,
 	output logic[8:0] Ans
 	//output logic Carry DONT NEED CARRY
 );
 
-	logic [8:0] Btemp;
+	logic [7:0] Btemp;
 	logic useless;
+	logic extA;
+	logic extB;
 	
 	
 	always_comb
@@ -16,7 +18,7 @@ module calc(
 	end
 
 	
-	adder useful(.A(A), .B(B), .Sum(Ans), .Carry(useless));
+	adder useful(.A(A), .B(B), .A9(A[7]), .B9(Btemp[7]), .Sum(Ans), .Carry(useless));
 
 
 

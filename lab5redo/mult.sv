@@ -20,27 +20,28 @@ module mult
 logic Reset_SH, ClrA_LdB, Run_SH; //buttons from sync
 
 
-logic add, sub, shift, clr_A, a_out, b_out, clr;
+logic add, sub, shift, a_out, b_out, clr;
 
 logic [7:0] A;
 logic [7:0] B;
 logic [7:0] Din_S;
 
 logic [8:0] Sum;
-logic [8:0] SextA;
+//logic [8:0] SextA;
+
 
 assign Aval = A;
 assign Bval = B;
 
 
-
+/*
 sex extA(.in(A), .out(SextA)); // sign extend A
 sex extS(.in(Din_S), .out(SextS)); // sign extend S
+*/
 
 
 
-
-calc domath(.A(SextA), .B(SextS), .opp(sub), .Ans(Sum)); //2s complement add subtract
+calc domath(.A(A), .B(Din_S), .opp(sub), .Ans(Sum)); //2s complement add subtract
 
 
 control doyourjob(.Clk(Clk), 
@@ -51,8 +52,7 @@ control doyourjob(.Clk(Clk),
 						.Clr_Ld(clr), 
 						.Shift(shift),
 						.Add(add),
-						.Sub(sub),
-						.ClearA(clr_A)
+						.Sub(sub)
 						);
 
 						
@@ -61,7 +61,7 @@ control doyourjob(.Clk(Clk),
 						
 
 reg_8 ReggieA(.Clk(Clk), 
-				  .Reset(Reset_SH || clr_A), 
+				  .Reset(Reset_SH || clr), 
 				  .Shift_In(X), 
 				  .Load(add || sub), 
 				  .D(Sum[7:0]), 
@@ -73,7 +73,7 @@ reg_8 ReggieA(.Clk(Clk),
 
 
 reg_8 ReggieBruh(.Clk(Clk), 
-				  .Reset(Reset), 
+				  .Reset(Reset_SH), 
 				  .Shift_In(a_out), 
 				  .Load(clr), 
 				  .D(Din_S), 
@@ -86,7 +86,7 @@ reg_8 ReggieBruh(.Clk(Clk),
 
 
 reg_1 XGamesRedBull(.Clk(Clk), 
-						  .Reset(clr_A|| Reset_SH),
+						  .Reset(clr|| Reset_SH),
 						  .Load(add || sub),
 						  .D(Sum[8]),
 						  .Data_Out(X)

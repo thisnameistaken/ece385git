@@ -159,7 +159,7 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB,
 					end
 					else begin
 					 Clr_Ld = 1'b0;
-                Shift  = 1'b1;
+                Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
 					 ClearA = 1'b0;
@@ -184,7 +184,7 @@ module control (input logic Clk, Reset, Run, ClearA_LoadB,
 					 end
 					 else begin
                 Clr_Ld = 1'b0;
-                Shift  = 1'b1;
+                Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
 					 ClearA = 1'b0;					 

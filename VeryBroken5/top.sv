@@ -29,6 +29,7 @@ register_unit reg_unit(
 							.Reset(Reset_SH), //Button
 							.x1(xfromadd),
 							.Add(add), 
+							.Sub(sub),
 							.Clr_Ld(clr),
 							.Shift(shift),
 							.ClearA(clr_A),
@@ -42,6 +43,42 @@ register_unit reg_unit(
 							.B(B)
 							);
 
+							/*
+							
+reg_8 ReggieA(.Clk(Clk), 
+				  .Reset(Reset_SH || clr_A), 
+				  .Shift_In(X), 
+				  .Load(add || sub), 
+				  .D(sum[7:0]), 
+				  .Shift_Out(a_out),
+				  .Data_Out(A)
+				  );
+				  
+
+
+
+reg_8 ReggieBruh(.Clk(Clk), 
+				  .Reset(Reset_SH), 
+				  .Shift_In(a_out), 
+				  .Load(clr), 
+				  .D(Din_S), 
+				  .Shift_Out(b_out),
+				  .Data_Out(B)
+				  );
+
+
+
+
+
+reg_1 XGamesRedBull(.Clk(Clk), 
+						  .Reset(clr_A|| Reset_SH),
+						  .Load(add || sub),
+						  .D(xfromadd),
+						  .Data_Out(X)
+						  );	
+							
+	*/						
+							
 control c_unit(
 				.Clk(Clk),
 				.Reset(Reset_SH), //Button
@@ -55,11 +92,12 @@ control c_unit(
 				.ClearA(clr_A)
 				);
 
-carry_select_addermod          adder_unit(
+carry_select_addermod       adder_unit(
 									.A(A),
 									.B(Din_S),
 									.A9(A[7]),
 									.B9(Din_S[7]),
+									.sub(sub),
 									.Sum(sum),
 									.cOut(cOut),
 									.X(xfromadd)
