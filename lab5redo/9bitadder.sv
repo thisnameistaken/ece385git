@@ -1,4 +1,4 @@
-module carry_select_adder
+module adder
 (
     input   logic[8:0]     A,
     input   logic[8:0]     B,

@@ -16,7 +16,7 @@ module calc(
 	end
 
 	
-	carry_select_adder useful(.A(A), .B(B), .Sum(Ans), .Carry(useless));
+	adder useful(.A(A), .B(B), .Sum(Ans), .Carry(useless));
 
 
 

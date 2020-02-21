@@ -17,27 +17,26 @@ module mult
 	 output  logic           X
 );
 
+logic Reset_SH, ClrA_LdB, Run_SH; //buttons from sync
 
+
+logic add, sub, shift, clr_A, a_out, b_out, clr;
 
 logic [7:0] A;
 logic [7:0] B;
 logic [7:0] Din_S;
 
+logic [8:0] Sum;
+logic [8:0] SextA;
 
 assign Aval = A;
 assign Bval = B;
 
 
-logic add, sub, shift, clr_A, a_out, b_out, clr;
-
-
-logic [8:0] Sum;
-logic [8:0] SextA;
 
 sex extA(.in(A), .out(SextA)); // sign extend A
 sex extS(.in(Din_S), .out(SextS)); // sign extend S
 
-logic Reset_SH, ClrA_LdB, Run_SH; //buttons from sync
 
 
 
@@ -112,6 +111,9 @@ HexDriver        HexAU (
 HexDriver        HexBU (
                         .In0(B[7:4]),
                         .Out0(BhexU) );
+								
+								
+								
 
 sync button_sync[2:0] (Clk, {~Reset, ~ClearA_LoadB, ~Run}, {Reset_SH, ClrA_LdB, Run_SH});
 sync Din_sync[7:0] (Clk, S, Din_S);
