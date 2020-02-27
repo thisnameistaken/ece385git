@@ -99,15 +99,13 @@ begin
 				end
 				
 				Sub1: begin
-					if(Bin[0]) begin
-                Clr_Ld = 1'b0;
+					 Clr_Ld = 1'b0;
                 Shift  = 1'b0;
+					if(Bin[0]) begin
 					 Add = 1'b0;
 					 Sub = 1'b1;
 					 end
 					 else begin
-                Clr_Ld = 1'b0;
-                Shift  = 1'b0;
 					 Add = 1'b0;
 					 Sub = 1'b0;
 										 

@@ -15,22 +15,19 @@ module adder
 	  
 	  logic A9;
 	  logic B9;
-	  
+
 	  
 	  logic [7:0] Btemp;
 	  
 	  
-	  
 	  assign Btemp = (B ^ {8{opp}});
-	  assign B9 = Btemp[7];
-	  assign A9 = A[7];
-	  
-	  
+
+	
 	  
 	  logic C0, C1;
-	  csa0 FA0(.A(A[3:0]), .B(Btemp[3:0]), .cIn(0), .o(Ans[3:0]), .cout(C0));
+	  csa0 FA0(.A(A[3:0]), .B(Btemp[3:0]), .cIn(opp), .o(Ans[3:0]), .cout(C0));
 	  csa FA1(.A(A[7:4]), .B(Btemp[7:4]), .cIn(C0), .out(Ans[7:4]), .cout(C1));
-	  full_adder_csa FA2(.x(A9), .y(B9), .cIn(c1), .s(Ans[8]), .cOut());
+	  full_adder_csa FA2(.x(A[7]), .y(Btemp[7]), .cIn(c1), .s(Ans[8]), .cOut());
 	  
 	  
 	    

@@ -61,9 +61,9 @@ control doyourjob(.Clk(Clk),
 						
 
 reg_8 ReggieA(.Clk(Clk), 
-				  .Reset(Reset_SH || clr), 
+				  .Reset(Reset_SH | clr), 
 				  .Shift_In(X), 
-				  .Load(add || sub), 
+				  .Load(add | sub), 
 				  .Shift(shift),
 				  .D(Sum[7:0]), 
 				  .Shift_Out(a_out),
@@ -88,9 +88,9 @@ reg_8 ReggieBruh(.Clk(Clk),
 
 
 reg_1 XGamesRedBull(.Clk(Clk), 
-						  .Reset(clr|| Reset_SH),
-						  .Load(add || sub),
-						  .D(Sum[8]),
+						  .Reset(clr| Reset_SH),
+						  .Load(add | sub),
+						  .D(Sum[7] | 1'b0),
 						  .Data_Out(X)
 						  );						
 						
