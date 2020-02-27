@@ -74,7 +74,8 @@ assign MIO_EN = ~OE;
 
 // You need to make your own datapath module and connect everything to the datapath
 // Be careful about whether Reset is active high or low
-datapath d0 (/* Please fill in the signals.... */);
+datapath d0 (.Clk(Clk), .Reset(Reset), .LD_IR(LD_IR), .LD_MDR(LD_MDR), .LD_MAR(LD_MAR), .LD_PC(LD_PC), .MDR_In(MDR_In), .IR_Out(IR), .MDR_Out(MDR), 
+.MAR_Out(MAR), .PC_Out(PC));
 
 // Our SRAM and I/O controller
 Mem2IO memory_subsystem(
