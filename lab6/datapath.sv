@@ -15,8 +15,8 @@ logic [15:0] pc_out, mar_out, mdr_out, ir_out, adder_out, alu_out; //Outputs of 
 logic [15:0] data_bus; //Data on bus
 logic [1:0] gate_select; 
 
-assign gate_select[0] = ~GatePC & ~GateMDR; //Logic for internal tri-state buffers
-assign gate_select[1] = ~GatePC & ~GateALU;
+assign gate_select[1] = ~GatePC & ~GateMDR; //Logic for internal tri-state buffers
+assign gate_select[0] = ~GatePC & ~GateALU;
 
 assign IR_Out = ir_out; //Assign outputs
 assign MDR_Out = mdr_out;
