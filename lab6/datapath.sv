@@ -13,10 +13,15 @@ module datapath(input logic Clk,
 logic [15:0] pc_in; //Inputs for registers
 logic [15:0] pc_out, mar_out, mdr_out, ir_out, adder_out, alu_out; //Outputs of registers
 logic [15:0] data_bus; //Data on bus
-logic [1:0] gate_select;
+logic [1:0] gate_select; 
 
-assign gate_select[0] = ~GatePC & ~GateMDR;
+assign gate_select[0] = ~GatePC & ~GateMDR; //Logic for internal tri-state buffers
 assign gate_select[1] = ~GatePC & ~GateALU;
+
+assign IR_Out = ir_out; //Assign outputs
+assign MDR_Out = mdr_out;
+assign MAR_Out = mar_out;
+assign PC_Out = pc_out;
 
 //Registers in datapath
 IR IR_Reg(.Clk(Clk), .Reset(Reset), .LD_IR(LD_IR), .D(data_bus), .Data_Out(ir_out));
