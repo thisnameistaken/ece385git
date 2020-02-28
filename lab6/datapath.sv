@@ -16,7 +16,7 @@ logic [15:0] data_bus; //Data on bus
 logic [1:0] gate_select; 
 
 assign gate_select[1] = ~GatePC & ~GateMDR; //Logic for internal tri-state buffers
-assign gate_select[0] = ~GatePC & ~GateALU;
+assign gate_select[0] = ~GatePC & ~GateALU; 
 
 assign IR_Out = ir_out; //Assign outputs
 assign MDR_Out = mdr_out;
@@ -35,9 +35,7 @@ PC PC_Reg(.Clk(Clk), .Reset(Reset), .LD_PC(LD_PC), .D(pc_in), .Data_Out(pc_out))
 //Muxes in datapath
 threemux_16bit PC_MUX(.A(pc_out + 16'h01), .B(data_bus), .C(adder_out), .Select(PCMUX), .Out(pc_in));
 
-
 //Mux for Gate select replacing internal tri-state buffers
 fourmux_16bit gate_Select_MUX(.A(pc_out), .B(mdr_out), .C(alu_out), .D(adder_out), .Select(gate_select), .Out(data_bus));
-
 
 endmodule
