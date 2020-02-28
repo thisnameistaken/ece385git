@@ -52,7 +52,11 @@ Continue = 1;	// Toggle Reset
 
 #10 Run = 1;
 
-#2 Continue = 0;
+#10 Continue = 0;
+
+#10 Continue = 1;
+
+#10 Continue = 0;
 
 #10 Continue = 1;
 
