@@ -55,24 +55,15 @@ module ISDU (   input logic         Clk,
 									Mem_WE
 				);
 
-	enum logic [5:0] {  Halted, 
-						/*PauseIR1, 
-						PauseIR2, */
+	enum logic [3:0] {  Halted, 
+						PauseIR1, 
+						PauseIR2, 
 						S_18, 
 						S_33_1, 
 						S_33_2, 
 						S_35, 
 						S_32, 
-						S_00,
-						S_01,
-						S_05,
-						S_09,
-						S_12,
-						S_04,
-						S_06,
-						S_07,
-						S_13
-						}   State, Next_state;   // Internal state logic
+						S_01}   State, Next_state;   // Internal state logic
 		
 	always_ff @ (posedge Clk)
 	begin
@@ -128,10 +119,10 @@ module ISDU (   input logic         Clk,
 			S_33_2 : 
 				Next_state = S_35;
 			S_35 : 
-				Next_state = S_32;
+				Next_state = PauseIR1;
 			// PauseIR1 and PauseIR2 are only for Week 1 such that TAs can see 
 			// the values in IR.
-			/*PauseIR1 : 
+			PauseIR1 : 
 				if (~Continue) 
 					Next_state = PauseIR1;
 				else 
@@ -140,50 +131,18 @@ module ISDU (   input logic         Clk,
 				if (Continue) 
 					Next_state = PauseIR2;
 				else 
-					Next_state = S_18;*/
+					Next_state = S_18;
 			S_32 : 
 				case (Opcode)
-					4'b0000 :
-						Next_state = S_00; //BRANCH
 					4'b0001 : 
-						Next_state = S_01; //ADD
-					4'b0101 : 
-						Next_state = S_05; //AND
-					4'b1001 : 
-						Next_state = S_09; //NOT
-					4'b1100 : 
-						Next_state = S_12; //JMP (JUMP)
-					4'b0100 : 
-						Next_state = S_04; //JSR (JUMP SAVE REGISTER)
-					4'b0110 : 
-						Next_state = S_06; //LDR (LOAD REGISTER)
-					4'b0111 : 
-						Next_state = S_07; //STR (STORE)
-					4'b1101 : 
-						Next_state = S_13; //PAUSE
+						Next_state = S_01;
 
 					// You need to finish the rest of opcodes.....
 
 					default : 
 						Next_state = S_18;
 				endcase
-			S_00 : 
-				Next_state = S_18;
 			S_01 : 
-				Next_state = S_18;
-			S_05 : 
-				Next_state = S_18;
-			S_09 : 
-				Next_state = S_18;
-			S_12 : 
-				Next_state = S_18;
-			S_04 : 
-				Next_state = S_18;
-			S_06 : 
-				Next_state = S_18;
-			S_07 : 
-				Next_state = S_18;
-			S_13 : 
 				Next_state = S_18;
 
 			// You need to finish the rest of states.....
@@ -214,8 +173,8 @@ module ISDU (   input logic         Clk,
 					GateMDR = 1'b1;
 					LD_IR = 1'b1;
 				end
-			//PauseIR1: ;
-			//PauseIR2: ;
+			PauseIR1: ;
+			PauseIR2: ;
 			S_32 : 
 				LD_BEN = 1'b1;
 			S_01 : 
