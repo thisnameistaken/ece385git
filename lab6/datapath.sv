@@ -11,6 +11,7 @@ odule datapath(input logic Clk,
 
 //Internal logic
 logic [15:0] pc_in, mdr_in, adder_1, adder_2; //Inputs for registers
+logic [15:0] sext5, sext6, sext9, sext11; //Sign Extend bits
 logic [15:0] pc_out, mar_out, mdr_out, ir_out, adder_out, alu_out; //Outputs of registers
 logic [15:0] data_bus; //Data on bus
 logic [1:0] gate_select; //Buffer select for data_bus
@@ -37,9 +38,18 @@ threemux_16bit PC_MUX(.A(pc_out + 16'h01), .B(data_bus), .C(adder_out), .Select(
 
 twomux_16bit ADDR1_MUX(.A(pc_out), .B(), .Select(ADDR1MUX), .Out(adder_1)); //ADDR1MUX
 
-fourmux_16bit ADDR2_MUX(.A(), .B(), .C(), .D(), .Select(ADDR2MUX), .Out(adder_2)); //ADDR2MUX
+fourmux_16bit ADDR2_MUX(.A(16'h0), .B(sext6), .C(sext9), .D(sext11), .Select(ADDR2MUX), .Out(adder_2)); //ADDR2MUX
 
 twomux_16bit MIO_MUX(.A(data_bus), .B(MDR_In), .Select(MIO_EN), .Out(mdr_in)); //MIOEN MUX
+
+//SEXTS
+sextfive SEXT5(.in(ir_out[4:0]), .out(sext5));
+
+sextsix SEXT6(.in(ir_out[5:0]), .out(sext6));
+
+sextnine SEXT9(.in(ir_out[8:0]), .out(sext9));
+
+sexteleven SEXT11(.in(ir_out[10:0]), .out(sext11));
 
 //ADDER for ADDR1 and ADDR2
 assign adder_out = adder_1 + adder_2;

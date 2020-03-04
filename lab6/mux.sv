@@ -1,19 +1,15 @@
-/*module twomux(input logic A, B, Select, output logic Out);
+module twomux_16bit(input logic [15:0] A, B, Select, output logic [15:0] Out);
 		
-		always_comb begin
-			if(Select == 1'b0) begin
-				Out = A;
-			end
-			
-			else begin
-				Out = B;
-			end
-		
+	always_comb 
+		begin
+			case(Select)
+				1'b0 : A;
+				1'b1 : B; 
+			endcase
 		end
-
 endmodule
 
-
+/*
 module fourmux(input logic A, B, C, D, input logic [1:0] Select, output logic Out);
 		
 		always_comb begin

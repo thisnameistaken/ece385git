@@ -9,7 +9,7 @@
 
 endmodule*/
 
-module sextfour (input logic [4:0]in, output logic [15:0]out);
+module sextfive (input logic [4:0]in, output logic [15:0]out);
    
    always_comb
     begin
@@ -19,7 +19,7 @@ module sextfour (input logic [4:0]in, output logic [15:0]out);
 endmodule
 
 
-module sextfive (input logic [5:0]in, output logic [15:0]out);
+module sextsix (input logic [5:0]in, output logic [15:0]out);
 
    always_comb
     begin
@@ -28,7 +28,7 @@ module sextfive (input logic [5:0]in, output logic [15:0]out);
 
 endmodule
 
-module sexteight (input logic [8:0]in, output logic [15:0]out);
+module sextnine (input logic [8:0]in, output logic [15:0]out);
 
    always_comb
     begin
@@ -37,7 +37,7 @@ module sexteight (input logic [8:0]in, output logic [15:0]out);
 
 endmodule
 
-module sextten (input logic [10:0]in, output logic [15:0]out);
+module sexteleven (input logic [10:0]in, output logic [15:0]out);
 
    always_comb
     begin
