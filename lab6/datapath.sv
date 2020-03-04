@@ -1,6 +1,6 @@
-odule datapath(input logic Clk,
+module datapath(input logic Clk,
 					 input logic Reset,
-					 input logic LD_IR, LD_MDR, LD_MAR, LD_PC, GatePC, GateMDR, GateALU, GateMARMUX, MIO_EN, ADDR1MUX
+					 input logic LD_IR, LD_MDR, LD_MAR, LD_PC, GatePC, GateMDR, GateALU, GateMARMUX, MIO_EN, ADDR1MUX,
 					 input logic [1:0] PCMUX, ADDR2MUX, ALUK,
 					 input logic [15:0] MDR_In,
 					 output logic [15:0] IR_Out, 
