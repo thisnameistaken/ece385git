@@ -10,10 +10,10 @@ module NZPReg(input logic [2:0] nzp, input  logic Clk, Reset, Load, input logic 
             if(Bus[15] && nzp[2])
                 BEnable <= 1'b1;
             
-            else if(~Bus[15] && nzp[1])
+            else if(~Bus[15] && nzp[1] && (Bus != 15h'0000))
                 BEnable <= 1'b1;
 
-            else if(~Bus[15] && nzp[0])
+            else if((Bus == 15h'0000) && nzp[0])
                 BEnable <= 1'b1;
         end
 			  
