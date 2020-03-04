@@ -1,5 +1,5 @@
 /*module sext
-    
+    #(parameter width = 10)
     (input logic [width - 1:0]in, output logic [15:0]out);
 
    always_comb
