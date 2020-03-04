@@ -10,6 +10,6 @@ assign AND = A & B;
 assign XOR = A ^ B;
 
 //ALU Mux
-fourmux_16bit ALU_MUX(.A(ADD), .B(AND), .C(XOR), .D(A), .Select(ALUK), .Out(Out))
+fourmux_16bit ALU_MUX(.A(ADD), .B(AND), .C(XOR), .D(A), .Select(ALUK), .Out(Out));
 			  
 endmodule 
