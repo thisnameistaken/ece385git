@@ -1,12 +1,13 @@
 module datapath(input logic Clk,
 					 input logic Reset,
-					 input logic LD_IR, LD_MDR, LD_MAR, LD_PC, GatePC, GateMDR, GateALU, GateMARMUX, MIO_EN, ADDR1MUX, SR1MUX, SR2MUX, DRMUX,
+					 input logic LD_IR, LD_MDR, LD_MAR, LD_PC, LD_REG, GatePC, GateMDR, GateALU, GateMARMUX, MIO_EN, ADDR1MUX, SR1MUX, SR2MUX, DRMUX,
 					 input logic [1:0] PCMUX, ADDR2MUX, ALUK,
 					 input logic [15:0] MDR_In,
 					 output logic [15:0] IR_Out, 
 					 output logic [15:0] MDR_Out, 
 					 output logic [15:0] MAR_Out, 
-					 output logic [15:0] PC_Out
+					 output logic [15:0] PC_Out,
+					 output logic BEN
 					);
 
 //Internal logic
@@ -16,6 +17,7 @@ logic [15:0] pc_out, mar_out, mdr_out, ir_out, adder_out, alu_out; //Outputs of 
 logic [15:0] data_bus; //Data on bus
 logic [1:0] gate_select; //Buffer select for data_bus
 logic [2:0] SR1_In, SR2_In, DR_In;
+logic [15:0] SR1_Out, SR2_Out, SR2MUX_Out;
 
 assign gate_select[1] = ~GatePC & ~GateMDR; //Logic for internal tri-state buffers
 assign gate_select[0] = ~GatePC & ~GateALU; 
@@ -37,7 +39,7 @@ PC PC_Reg(.Clk(Clk), .Reset(Reset), .LD_PC(LD_PC), .D(pc_in), .Data_Out(pc_out))
 //Muxes in datapath
 threemux_16bit PC_MUX(.A(pc_out + 16'h01), .B(data_bus), .C(adder_out), .Select(PCMUX), .Out(pc_in)); //PCMUX
 
-twomux_16bit ADDR1_MUX(.A(pc_out), .B(), .Select(ADDR1MUX), .Out(adder_1)); //ADDR1MUX
+twomux_16bit ADDR1_MUX(.A(pc_out), .B(SR1_Out), .Select(ADDR1MUX), .Out(adder_1)); //ADDR1MUX
 
 fourmux_16bit ADDR2_MUX(.A(16'h0), .B(sext6), .C(sext9), .D(sext11), .Select(ADDR2MUX), .Out(adder_2)); //ADDR2MUX
 
@@ -45,7 +47,7 @@ twomux_3bit DR_MUX(.A(ir_out[11:9]), .B(3'b111), .Select(DRMUX), .Out(DR_In)); /
 
 twomux_3bit SR1_MUX(.A(ir_out[11:9]), .B(ir_out[8:6]), .Select(SR1MUX), .Out(SR1_In)); //SR1MUX
 
-twomux_16bit SR2_MUX(.A(), .B(), .Select(SR2MUX), .Out()); //SR2MUX
+twomux_16bit SR2_MUX(.A(SR2_Out), .B(sext5), .Select(SR2MUX), .Out(SR2MUX_Out)); //SR2MUX
 
 twomux_16bit MIO_MUX(.A(data_bus), .B(MDR_In), .Select(MIO_EN), .Out(mdr_in)); //MIOEN MUX
 
@@ -62,10 +64,14 @@ sexteleven SEXT11(.in(ir_out[10:0]), .out(sext11));
 assign adder_out = adder_1 + adder_2;
 
 //Register File
-Regfile registers(.Clk(Clk), .Reset(Reset), .LD_REG(LD_REG), .DR_In(DR_In), .SR1_In(SR1_In), .SR2_In(SR2_In));
+Regfile registers(.Clk(Clk), .Reset(Reset), .LD_REG(LD_REG), .DR_In(DR_In), .SR1_In(SR1_In), .SR2_In(IR[2:0]), .data_bus(data_bus),
+.SR1_Out(SR1_Out), .SR2_Out(SR2_Out));
+
+//NZP Logic
+NZPReg nzp_reg(.Clk(Clk), .Reset(Reset), .nzp(ir_out[11:9]), .LD_CC(LD_CC), .LD_BEN(LD_BEN), .data_bus(data_bus), .BEnable(BEN));
 
 //ALU
-ALU alu(.A(), .B(), .ALUK(ALUK), .Out(alu_out));
+ALU alu(.A(SR1_Out), .B(SR2MUX_Out), .ALUK(ALUK), .Out(alu_out));
 
 //Mux for Gate select replacing internal tri-state buffers
 fourmux_16bit gate_Select_MUX(.A(pc_out), .B(mdr_out), .C(alu_out), .D(adder_out), .Select(gate_select), .Out(data_bus));

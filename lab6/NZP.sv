@@ -1,4 +1,5 @@
-module NZPReg(input logic [2:0] nzp, input  logic Clk, Reset, LD_CC, LD_BEN input logic [15:0] data_bus, 
+module NZPReg(input logic [2:0] nzp, input  logic Clk, Reset, LD_CC, LD_BEN,
+				  input logic [15:0] data_bus, 
               output logic BEnable);
 
     logic [15:0] checker;
