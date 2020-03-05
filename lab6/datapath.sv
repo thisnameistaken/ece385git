@@ -1,6 +1,6 @@
 module datapath(input logic Clk,
 					 input logic Reset,
-					 input logic LD_IR, LD_MDR, LD_MAR, LD_PC, GatePC, GateMDR, GateALU, GateMARMUX, MIO_EN, ADDR1MUX,
+					 input logic LD_IR, LD_MDR, LD_MAR, LD_PC, GatePC, GateMDR, GateALU, GateMARMUX, MIO_EN, ADDR1MUX, SR1MUX, SR2MUX, DRMUX,
 					 input logic [1:0] PCMUX, ADDR2MUX, ALUK,
 					 input logic [15:0] MDR_In,
 					 output logic [15:0] IR_Out, 
@@ -39,6 +39,12 @@ threemux_16bit PC_MUX(.A(pc_out + 16'h01), .B(data_bus), .C(adder_out), .Select(
 twomux_16bit ADDR1_MUX(.A(pc_out), .B(), .Select(ADDR1MUX), .Out(adder_1)); //ADDR1MUX
 
 fourmux_16bit ADDR2_MUX(.A(16'h0), .B(sext6), .C(sext9), .D(sext11), .Select(ADDR2MUX), .Out(adder_2)); //ADDR2MUX
+
+twomux_16bit DR_MUX(.A(), .B(), .Select(DRMUX), .Out()); //DRMUX
+
+twomux_16bit SR1_MUX(.A(), .B(), .Select(SR1MUX), .Out()); //SR1MUX
+
+twomux_16bit SR2_MUX(.A(), .B(), .Select(SR2MUX), .Out()); //SR2MUX
 
 twomux_16bit MIO_MUX(.A(data_bus), .B(MDR_In), .Select(MIO_EN), .Out(mdr_in)); //MIOEN MUX
 
