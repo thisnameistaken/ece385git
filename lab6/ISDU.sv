@@ -71,7 +71,19 @@ module ISDU (   input logic         Clk,
 						S_04,
 						S_06,
 						S_07,
-						S_13
+						S_13,
+						ADDn, // normal add
+						ADDi,  // add immediate
+						ANDn, // and normal
+						ANDi, // and immediate
+						JSRPT2, // second step JSR
+						BRANCHPASS, // BEN enabled and change PC
+						BRANCHFAIL,  // BEN not enabled and PC unchanged
+						LDRPT2, // LDR 2nd Step
+						LDRPT3, // LDR 3rd Step
+						STRPT2, // STR 2nd Step
+						STRPT3, // STR 3rd Step
+						PAUSEPT2 // 2nd part of pause state
 						}   State, Next_state;   // Internal state logic
 		
 	always_ff @ (posedge Clk)
@@ -168,25 +180,72 @@ module ISDU (   input logic         Clk,
 						Next_state = S_18;
 				endcase
 			S_00 : 
+				if (BEN) //Branch does dfferent things depending on BEN
+					Next_state = BRANCHPASS;
+				else 
+					Next_state = BRANCHFAIL;
+			BRANCHPASS :
 				Next_state = S_18;
-			S_01 : 
+			BRANCHFAIL :
+				Next_state = S_18;	
+
+			S_01 : //add top choosing
+				if (IR_5) 
+					Next_state = ADDn;
+				else 
+					Next_state = ADDi;
+			ADDi : 
 				Next_state = S_18;
-			S_05 : 
-				Next_state = S_18;
-			S_09 : 
-				Next_state = S_18;
-			S_12 : 
-				Next_state = S_18;
-			S_04 : 
-				Next_state = S_18;
-			S_06 : 
-				Next_state = S_18;
-			S_07 : 
-				Next_state = S_18;
-			S_13 : 
+			ADDn : 
 				Next_state = S_18;
 
-			// You need to finish the rest of states.....
+			S_05 : //AND top choosing
+				if (IR_5) 
+					Next_state = ANDn;
+				else 
+					Next_state = ANDi;
+			ANDi : 
+				Next_state = S_18;
+			ANDn : 
+				Next_state = S_18;
+
+			S_09 : //NOT state only needs one state
+				Next_state = S_18;
+
+			S_12 : //JMP only needs one state
+				Next_state = S_18;
+
+			S_04 : //JSR Needs two states,
+				Next_state = JSRPT2;
+			JSRPT2 :
+				Next_state = S_18;
+
+			S_06 : //LDR -> Requires several states to complete process
+				Next_state = LDRPT2;
+			LDRPT2 : 
+				Next_state = LDRPT3;
+			LDRPT3 :
+				Next_state = S_18;
+
+			S_07 : //STR -> Requires several states to complete process
+				Next_state = STRPT2;
+			STRPT2 : 
+				Next_state = STRPT3;
+			STRPT3 : 
+				Next_state = S_18;
+
+			S_13 : //Pause, p much same as pauseIR 
+				if (~Continue) 
+					Next_state = S_13;
+				else 
+					Next_state = PAUSEPT2;
+			PAUSEPT2 : 
+				if (Continue) 
+					Next_state = PAUSEPT2;
+				else 
+					Next_state = S_18;
+
+			// You need to finish the rest of states..... on it boss
 
 			default : ;
 
