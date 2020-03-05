@@ -15,6 +15,7 @@ logic [15:0] sext5, sext6, sext9, sext11; //Sign Extend bits
 logic [15:0] pc_out, mar_out, mdr_out, ir_out, adder_out, alu_out; //Outputs of registers
 logic [15:0] data_bus; //Data on bus
 logic [1:0] gate_select; //Buffer select for data_bus
+logic [2:0] SR1_In, SR2_In, DR_In;
 
 assign gate_select[1] = ~GatePC & ~GateMDR; //Logic for internal tri-state buffers
 assign gate_select[0] = ~GatePC & ~GateALU; 
@@ -40,9 +41,9 @@ twomux_16bit ADDR1_MUX(.A(pc_out), .B(), .Select(ADDR1MUX), .Out(adder_1)); //AD
 
 fourmux_16bit ADDR2_MUX(.A(16'h0), .B(sext6), .C(sext9), .D(sext11), .Select(ADDR2MUX), .Out(adder_2)); //ADDR2MUX
 
-twomux_16bit DR_MUX(.A(), .B(), .Select(DRMUX), .Out()); //DRMUX
+twomux_3bit DR_MUX(.A(ir_out[11:9]), .B(3'b111), .Select(DRMUX), .Out(DR_In)); //DRMUX
 
-twomux_16bit SR1_MUX(.A(), .B(), .Select(SR1MUX), .Out()); //SR1MUX
+twomux_3bit SR1_MUX(.A(ir_out[11:9]), .B(ir_out[8:6]), .Select(SR1MUX), .Out(SR1_In)); //SR1MUX
 
 twomux_16bit SR2_MUX(.A(), .B(), .Select(SR2MUX), .Out()); //SR2MUX
 
@@ -59,6 +60,9 @@ sexteleven SEXT11(.in(ir_out[10:0]), .out(sext11));
 
 //ADDER for ADDR1 and ADDR2
 assign adder_out = adder_1 + adder_2;
+
+//Register File
+Regfile registers(.Clk(Clk), .Reset(Reset), .LD_REG(LD_REG), .DR_In(DR_In), .SR1_In(SR1_In), .SR2_In(SR2_In));
 
 //ALU
 ALU alu(.A(), .B(), .ALUK(ALUK), .Out(alu_out));
