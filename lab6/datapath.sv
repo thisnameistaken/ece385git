@@ -1,6 +1,6 @@
 module datapath(input logic Clk,
 					 input logic Reset,
-					 input logic LD_IR, LD_MDR, LD_MAR, LD_PC, LD_REG, LD_CC, LD_BEN,
+					 input logic LD_IR, LD_MDR, LD_MAR, LD_PC, LD_REG, LD_CC, LD_BEN, LD_LED,
 					 input logic GatePC, GateMDR, GateALU, GateMARMUX, MIO_EN, ADDR1MUX, SR1MUX, SR2MUX, DRMUX,
 					 input logic [1:0] PCMUX, ADDR2MUX, ALUK,
 					 input logic [15:0] MDR_In,
@@ -8,17 +8,38 @@ module datapath(input logic Clk,
 					 output logic [15:0] MDR_Out, 
 					 output logic [15:0] MAR_Out, 
 					 output logic [15:0] PC_Out,
+					 output logic [11:0] ledVect12,
 					 output logic BEN
 					);
 
 //Internal logic
-logic [15:0] pc_in, mdr_in, adder_1, adder_2; //Inputs for registers
+logic [15:0] pc_in, mdr_in, adder_1, adder_2, check; //Inputs for registers
 logic [15:0] sext5, sext6, sext9, sext11; //Sign Extend bits
 logic [15:0] pc_out, mar_out, mdr_out, ir_out, adder_out, alu_out; //Outputs of registers
 logic [15:0] data_bus; //Data on bus
 logic [1:0] gate_select; //Buffer select for data_bus
-logic [2:0] SR1_In, SR2_In, DR_In;
+logic [2:0] SR1_In, SR2_In, DR_In; 
 logic [15:0] SR1_Out, SR2_Out, SR2MUX_Out;
+
+always_ff @ (posedge Clk) //LEDs for Continue operation
+	begin
+		if(Reset)
+			ledVect12 <= 16'h0;
+		else if(LD_LED)
+			ledVect12 <= ir_out[11:0];
+		else
+			ledVect12 <= ledVect12;
+	end
+	
+always_ff @ (posedge Clk)
+	begin
+		if(Reset)
+			check <= 16'h0;
+		else if(LD_CC)
+			check <= data_bus;
+		else
+			check <= check;
+	end
 
 assign gate_select[1] = ~GatePC & ~GateMDR; //Logic for internal tri-state buffers
 assign gate_select[0] = ~GatePC & ~GateALU; 
@@ -68,11 +89,11 @@ sexteleven SEXT11(.in(ir_out[10:0]), .out(sext11));
 assign adder_out = adder_1 + adder_2;
 
 //Register File
-Regfile registers(.Clk(Clk), .Reset(Reset), .LD_REG(LD_REG), .DR_In(DR_In), .SR1_In(SR1_In), .SR2_In(IR[2:0]), .data_bus(data_bus),
+Regfile registers(.Clk(Clk), .Reset(Reset), .LD_REG(LD_REG), .DR_In(DR_In), .SR1_In(SR1_In), .SR2_In(ir_out[2:0]), .data_bus(data_bus),
 .SR1_Out(SR1_Out), .SR2_Out(SR2_Out));
 
 //NZP Logic
-NZPReg nzp_reg(.Clk(Clk), .Reset(Reset), .nzp(ir_out[11:9]), .LD_CC(LD_CC), .LD_BEN(LD_BEN), .data_bus(data_bus), .BEnable(BEN));
+NZPReg nzp_reg(.Clk(Clk), .Reset(Reset), .nzp(ir_out[11:9]), .LD_BEN(LD_BEN), .check(check), .BEnable(BEN));
 
 //ALU
 ALU alu(.A(SR1_Out), .B(SR2MUX_Out), .ALUK(ALUK), .Out(alu_out));

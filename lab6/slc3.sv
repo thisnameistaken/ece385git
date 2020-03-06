@@ -49,16 +49,16 @@ logic [15:0] Data_from_SRAM, Data_to_SRAM;
 logic [3:0][3:0] hex_4;
 
 // For week 1, hexdrivers will display IR. Comment out these in week 2.
-HexDriver hex_driver3 (IR[15:12], HEX3);
+/*HexDriver hex_driver3 (IR[15:12], HEX3);
 HexDriver hex_driver2 (IR[11:8], HEX2);
 HexDriver hex_driver1 (IR[7:4], HEX1);
-HexDriver hex_driver0 (IR[3:0], HEX0);
+HexDriver hex_driver0 (IR[3:0], HEX0); */
 
 // For week 2, hexdrivers will be mounted to Mem2IO
-// HexDriver hex_driver3 (hex_4[3][3:0], HEX3);
-// HexDriver hex_driver2 (hex_4[2][3:0], HEX2);
-// HexDriver hex_driver1 (hex_4[1][3:0], HEX1);
-// HexDriver hex_driver0 (hex_4[0][3:0], HEX0);
+ HexDriver hex_driver3 (hex_4[3][3:0], HEX3);
+ HexDriver hex_driver2 (hex_4[2][3:0], HEX2);
+ HexDriver hex_driver1 (hex_4[1][3:0], HEX1);
+ HexDriver hex_driver0 (hex_4[0][3:0], HEX0);
 
 // The other hex display will show PC for both weeks.
 HexDriver hex_driver7 (PC[15:12], HEX7);
@@ -74,13 +74,13 @@ assign MIO_EN = ~OE;
 
 // You need to make your own datapath module and connect everything to the datapath
 // Be careful about whether Reset is active high or low
-datapath d0 (.Clk(Clk), .Reset(Reset_ah), .LD_IR(LD_IR), .LD_MDR(LD_MDR), .LD_MAR(LD_MAR), .LD_PC(LD_PC), .LD_REG(LD_REG), .LD_CC(LD_CC), .LD_BEN(LD_BEN),
+datapath d0 (.Clk(Clk), .Reset(Reset_ah), .LD_IR(LD_IR), .LD_MDR(LD_MDR), .LD_MAR(LD_MAR), .LD_PC(LD_PC), .LD_REG(LD_REG), .LD_CC(LD_CC), .LD_BEN(LD_BEN), .LD_LED(LD_LED), 
 .MDR_In(MDR_In), 
 .GatePC(GatePC), .GateMDR(GateMDR), .GateALU(GateALU), .GateMARMUX(GateMARMUX),
 .SR1MUX(SR1MUX), .SR2MUX(SR2MUX), .DRMUX(DRMUX),
 .MIO_EN(MIO_EN),
 .PCMUX(PCMUX), .ADDR2MUX(ADDR2MUX), .ADDR1MUX(ADDR1MUX), .ALUK(ALUK), 
-.IR_Out(IR), .MDR_Out(MDR), .MAR_Out(MAR), .PC_Out(PC), .BEN(BEN));
+.IR_Out(IR), .MDR_Out(MDR), .MAR_Out(MAR), .PC_Out(PC), .ledVect12(LED), .BEN(BEN));
 
 // Our SRAM and I/O controller
 Mem2IO memory_subsystem(
@@ -101,5 +101,7 @@ ISDU state_controller(
     .Opcode(IR[15:12]), .IR_5(IR[5]), .IR_11(IR[11]),
     .Mem_CE(CE), .Mem_UB(UB), .Mem_LB(LB), .Mem_OE(OE), .Mem_WE(WE)
 );
+
+sync sync1(.Clk);
 
 endmodule

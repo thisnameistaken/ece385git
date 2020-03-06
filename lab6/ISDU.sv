@@ -280,8 +280,10 @@ module ISDU (   input logic         Clk,
 				end
 			S_32 : 
 				LD_BEN = 1'b1;
-			S_13: ; //Pause 1
-			PAUSEPT2: ; //Pause 2
+			S_13: 
+				LD_LED = 1'b1; //Pause 1
+			PAUSEPT2: 
+				LD_LED = 1'b1; //Pause 2
 			BRANCHPASS : //S_22
 				begin
 					ADDR1MUX = 1'b0;
@@ -336,7 +338,48 @@ module ISDU (   input logic         Clk,
 					PCMUX = 2'b10;
 					LD_PC = 1'b1;
 				end
-
+			S_06 : //LDR
+				begin
+					SR1MUX = 1'b1;
+					ADDR1MUX = 1'b1;
+					ADDR2MUX = 2'b01;
+					GateMARMUX = 1'b1;
+					LD_MAR = 1'b1;
+				end
+			LDRPT2 :
+				Mem_OE = 1'b0;
+			LDRPT3 :
+				begin
+					Mem_OE = 1'b0;
+					LD_MDR = 1'b1;
+				end
+			LDRPT4 :
+				begin
+					GateMDR = 1'b1;
+					DRMUX = 1'b0;
+					LD_REG = 1'b1;
+				end
+				
+			S_07 : //STR
+				begin
+					SR1MUX = 1'b1;
+					ADDR1MUX = 1'b1;
+					ADDR2MUX = 2'b01;
+					GateMARMUX = 1'b1;
+					LD_MAR = 1'b1;					
+				end
+			STRPT2 :
+				begin
+					SR1MUX = 1'b0;
+					ALUK = 2'b11;
+					GateALU = 1'b1;
+					Mem_OE = 1'b1;
+					LD_MDR = 1'b1;
+				end
+			STRPT3 :
+				Mem_WE = 1'b0;
+			STRPT4 :
+				Mem_WE = 1'b0;
 			// You need to finish the rest of states.....
 
 			default : ;
