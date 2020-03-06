@@ -12,10 +12,10 @@ module NZPReg(input logic [2:0] nzp,
             if(check[15] && nzp[2])
                 BEnable <= 1'b1;
             
-            else if(~check[15] && nzp[0] && (check != 15'h0000))
+            else if(~check[15] && nzp[0] && (check != 16'h0000))
                 BEnable <= 1'b1;
 
-            else if((check == 15'h0000) && nzp[1])
+            else if((check == 16'h0000) && nzp[1])
                 BEnable <= 1'b1;
 				else
 					 BEnable <= 1'b0;

@@ -299,6 +299,7 @@ module ISDU (   input logic         Clk,
 					GateALU = 1'b1;
 					DRMUX = 1'b0;
 					LD_REG = 1'b1;
+					LD_CC = 1'b1;
 				end
 			S_05 : //AND
 				begin
@@ -308,6 +309,7 @@ module ISDU (   input logic         Clk,
 					GateALU = 1'b1;
 					DRMUX = 1'b0;					
 					LD_REG = 1'b1;
+					LD_CC = 1'b1;
 				end
 			S_09 : //NOT/XOR
 				begin
@@ -316,6 +318,7 @@ module ISDU (   input logic         Clk,
 					GateALU = 1'b1;
 					DRMUX = 1'b0;
 					LD_REG = 1'b1;
+					LD_CC = 1'b1;
 				end
 			S_12 : //JMP
 				begin
@@ -358,6 +361,7 @@ module ISDU (   input logic         Clk,
 					GateMDR = 1'b1;
 					DRMUX = 1'b0;
 					LD_REG = 1'b1;
+					LD_CC = 1'b1;
 				end
 				
 			S_07 : //STR
