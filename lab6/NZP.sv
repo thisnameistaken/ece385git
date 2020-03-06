@@ -8,7 +8,7 @@ module NZPReg(input logic [2:0] nzp, input  logic Clk, Reset, LD_CC, LD_BEN,
     begin
 	 	if (Reset) //Reset register
 			BEnable <= 1'b0; 
-        else if (LD_CC)
+      else if (LD_CC)
             checker = data_bus;
 		else if (LD_BEN) 
         begin

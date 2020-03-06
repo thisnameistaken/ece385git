@@ -7,7 +7,7 @@ logic [15:0] ADD, AND, XOR; //Internal logic for operations
 //ALU Operations
 assign ADD = A + B;
 assign AND = A & B;
-assign XOR = A ^ B;
+assign XOR = A ^ 16'hffff;
 
 //ALU Mux
 fourmux_16bit ALU_MUX(.A(ADD), .B(AND), .C(XOR), .D(A), .Select(ALUK), .Out(Out));

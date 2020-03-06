@@ -183,31 +183,35 @@ module ISDU (   input logic         Clk,
 				if (BEN) //Branch does dfferent things depending on BEN
 					Next_state = BRANCHPASS;
 				else 
-					Next_state = BRANCHFAIL;
+					Next_state = S_18;
 			BRANCHPASS :
-				Next_state = S_18;
-			BRANCHFAIL :
 				Next_state = S_18;	
 
 			S_01 : //add top choosing
+			
+				Next_state = S_18;
+				
+			/*
 				if (IR_5) 
-					Next_state = ADDn;
-				else 
 					Next_state = ADDi;
+				else 
+					Next_state = ADDn;
 			ADDi : 
 				Next_state = S_18;
 			ADDn : 
-				Next_state = S_18;
+				Next_state = S_18; */
 
 			S_05 : //AND top choosing
-				if (IR_5) 
-					Next_state = ANDn;
-				else 
+				Next_state = S_18;
+			
+			/*	if (IR_5) 
 					Next_state = ANDi;
+				else 
+					Next_state = ANDn;
 			ANDi : 
 				Next_state = S_18;
 			ANDn : 
-				Next_state = S_18;
+				Next_state = S_18; */
 
 			S_09 : //NOT state only needs one state
 				Next_state = S_18;
@@ -273,17 +277,63 @@ module ISDU (   input logic         Clk,
 					GateMDR = 1'b1;
 					LD_IR = 1'b1;
 				end
-			//PauseIR1: ;
-			//PauseIR2: ;
 			S_32 : 
 				LD_BEN = 1'b1;
-			S_01 : 
-				begin 
+			S_13: ; //Pause 1
+			PAUSEPT2: ; //Pause 2
+			BRANCHPASS : //BR
+				begin
+					ADDR1MUX = 1'b0;
+					ADDR2MUX = 2'b10;
+					PCMUX = 2'b10;
+					LD_PC = 1'b1;
+				end
+			S_01 : //ADD
+				begin
+					SR1MUX = 1'b1;
 					SR2MUX = IR_5;
 					ALUK = 2'b00;
 					GateALU = 1'b1;
+					DRMUX = 1'b0;
 					LD_REG = 1'b1;
-					// incomplete...
+				end
+			S_05 : //AND
+				begin
+					SR1MUX = 1'b1;
+					SR2MUX = IR_5;
+					ALUK = 2'b01;
+					GateALU = 1'b1;
+					DRMUX = 1'b0;					
+					LD_REG = 1'b1;
+				end
+			S_09 : //NOT/XOR
+				begin
+					SR1MUX = 1'b1;
+					ALUK = 2'b10;
+					GateALU = 1'b1;
+					DRMUX = 1'b0;
+					LD_REG = 1'b1;
+				end
+			S_12 : //JMP
+				begin
+					SR1MUX = 1'b1;
+					ADDR1MUX = 1'b1;
+					ADDR2MUX = 2'b00;
+					PCMUX = 2'b10;
+					LD_PC = 1'b1;
+				end
+			S_04 : //JSR
+				begin
+					GatePC = 1'b1;
+					DRMUX = 1'b1;
+					LD_REG = 1'b1;
+				end
+			JSRPT2 : //JSR2
+				begin
+					ADDR1MUX = 1'b0;
+					ADDR2MUX = 2'b11;
+					PCMUX = 2'b10;
+					LD_PC = 1'b1;
 				end
 
 			// You need to finish the rest of states.....
