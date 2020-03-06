@@ -72,17 +72,14 @@ module ISDU (   input logic         Clk,
 						S_06,
 						S_07,
 						S_13,
-						ADDn, // normal add
-						ADDi,  // add immediate
-						ANDn, // and normal
-						ANDi, // and immediate
 						JSRPT2, // second step JSR
 						BRANCHPASS, // BEN enabled and change PC
-						BRANCHFAIL,  // BEN not enabled and PC unchanged
-						LDRPT2, // LDR 2nd Step
-						LDRPT3, // LDR 3rd Step
+						LDRPT2, // LDR Memory (waiting)
+						LDRPT3, // LDR Memory
+						LDRPT4, // LDR 3rd Step
 						STRPT2, // STR 2nd Step
-						STRPT3, // STR 3rd Step
+						STRPT3, // STR Memory (waiting)
+						STRPT4, // STR Memory
 						PAUSEPT2 // 2nd part of pause state
 						}   State, Next_state;   // Internal state logic
 		
@@ -229,13 +226,17 @@ module ISDU (   input logic         Clk,
 			LDRPT2 : 
 				Next_state = LDRPT3;
 			LDRPT3 :
+				Next_state = LDRPT4;
+			LDRPT4 :
 				Next_state = S_18;
 
 			S_07 : //STR -> Requires several states to complete process
 				Next_state = STRPT2;
 			STRPT2 : 
 				Next_state = STRPT3;
-			STRPT3 : 
+			STRPT3 :
+				Next_state = STRPT4;
+			STRPT4 : 
 				Next_state = S_18;
 
 			S_13 : //Pause, p much same as pauseIR 
@@ -281,7 +282,7 @@ module ISDU (   input logic         Clk,
 				LD_BEN = 1'b1;
 			S_13: ; //Pause 1
 			PAUSEPT2: ; //Pause 2
-			BRANCHPASS : //BR
+			BRANCHPASS : //S_22
 				begin
 					ADDR1MUX = 1'b0;
 					ADDR2MUX = 2'b10;
@@ -328,7 +329,7 @@ module ISDU (   input logic         Clk,
 					DRMUX = 1'b1;
 					LD_REG = 1'b1;
 				end
-			JSRPT2 : //JSR2
+			JSRPT2 : //S_21
 				begin
 					ADDR1MUX = 1'b0;
 					ADDR2MUX = 2'b11;
