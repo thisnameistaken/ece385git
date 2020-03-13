@@ -100,8 +100,8 @@ ACDS_VERSION := 18.1
 # used to generate this makefile. 
 # BUILD_NUMBER: 625
 
-SETTINGS_FILE := ../../../lab7acc/software/lab7code_bsp/settings.bsp
-SOPC_FILE := ../../../lab7acc/lab7_soc.sopcinfo
+SETTINGS_FILE := settings.bsp
+SOPC_FILE := ../../lab7_soc.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS

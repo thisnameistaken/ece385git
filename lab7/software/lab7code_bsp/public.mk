@@ -86,7 +86,7 @@ ACDS_VERSION := 18.1
 
 # Qsys--generated SOPCINFO file. Required for resolving node instance ID's with 
 # design component names. 
-SOPCINFO_FILE := $(ABS_BSP_ROOT_DIR)/../../../lab7acc/lab7_soc.sopcinfo
+SOPCINFO_FILE := $(ABS_BSP_ROOT_DIR)/../../lab7_soc.sopcinfo
 
 # Big-Endian operation. 
 # setting BIG_ENDIAN is false
@@ -152,14 +152,14 @@ SOPC_SYSID_FLAG += --id=0
 ELF_PATCH_FLAG  += --id 0
 
 # The SOPC System ID Base Address 
-# setting SOPC_SYSID_BASE_ADDRESS is 0x138
-SOPC_SYSID_FLAG += --sidp=0x138
-ELF_PATCH_FLAG  += --sidp 0x138
+# setting SOPC_SYSID_BASE_ADDRESS is 0x58
+SOPC_SYSID_FLAG += --sidp=0x58
+ELF_PATCH_FLAG  += --sidp 0x58
 
 # The SOPC Timestamp 
-# setting SOPC_TIMESTAMP is 1584065952
-SOPC_SYSID_FLAG += --timestamp=1584065952
-ELF_PATCH_FLAG  += --timestamp 1584065952
+# setting SOPC_TIMESTAMP is 1584052360
+SOPC_SYSID_FLAG += --timestamp=1584052360
+ELF_PATCH_FLAG  += --timestamp 1584052360
 
 # Build a custom version of newlib with the specified space-separated compiler 
 # flags. The custom newlib build will be placed in the <bsp root>/newlib 

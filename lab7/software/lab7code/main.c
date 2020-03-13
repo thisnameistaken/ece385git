@@ -13,7 +13,7 @@
 int main()
 {
 	int i = 0;
-	volatile unsigned int *LED_PIO = (unsigned int*)0x40; //make a pointer to access the PIO block
+	volatile unsigned int *LED_PIO = (unsigned int*)0x90; //make a pointer to access the PIO block
 
 	*LED_PIO = 0; //clear all LEDs
 	while ( (1+1) != 3) //infinite loop

@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'lab7_soc'
- * SOPC Builder design path: ../../../lab7acc/lab7_soc.sopcinfo
+ * SOPC Builder design path: ../../lab7_soc.sopcinfo
  *
- * Generated: Thu Mar 12 21:37:58 CDT 2020
+ * Generated: Thu Mar 12 22:21:32 CDT 2020
  */
 
 /*
@@ -187,7 +187,7 @@
  */
 
 #define ALT_MODULE_CLASS_led altera_avalon_pio
-#define LED_BASE 0x110
+#define LED_BASE 0x40
 #define LED_BIT_CLEARING_EDGE_REGISTER 0
 #define LED_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LED_CAPTURE 0
@@ -206,195 +206,6 @@
 #define LED_RESET_VALUE 0
 #define LED_SPAN 16
 #define LED_TYPE "altera_avalon_pio"
-
-
-/*
- * led_1 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_led_1 altera_avalon_pio
-#define LED_1_BASE 0x100
-#define LED_1_BIT_CLEARING_EDGE_REGISTER 0
-#define LED_1_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define LED_1_CAPTURE 0
-#define LED_1_DATA_WIDTH 8
-#define LED_1_DO_TEST_BENCH_WIRING 0
-#define LED_1_DRIVEN_SIM_VALUE 0
-#define LED_1_EDGE_TYPE "NONE"
-#define LED_1_FREQ 50000000
-#define LED_1_HAS_IN 0
-#define LED_1_HAS_OUT 1
-#define LED_1_HAS_TRI 0
-#define LED_1_IRQ -1
-#define LED_1_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LED_1_IRQ_TYPE "NONE"
-#define LED_1_NAME "/dev/led_1"
-#define LED_1_RESET_VALUE 0
-#define LED_1_SPAN 16
-#define LED_1_TYPE "altera_avalon_pio"
-
-
-/*
- * led_2 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_led_2 altera_avalon_pio
-#define LED_2_BASE 0xf0
-#define LED_2_BIT_CLEARING_EDGE_REGISTER 0
-#define LED_2_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define LED_2_CAPTURE 0
-#define LED_2_DATA_WIDTH 8
-#define LED_2_DO_TEST_BENCH_WIRING 0
-#define LED_2_DRIVEN_SIM_VALUE 0
-#define LED_2_EDGE_TYPE "NONE"
-#define LED_2_FREQ 50000000
-#define LED_2_HAS_IN 0
-#define LED_2_HAS_OUT 1
-#define LED_2_HAS_TRI 0
-#define LED_2_IRQ -1
-#define LED_2_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LED_2_IRQ_TYPE "NONE"
-#define LED_2_NAME "/dev/led_2"
-#define LED_2_RESET_VALUE 0
-#define LED_2_SPAN 16
-#define LED_2_TYPE "altera_avalon_pio"
-
-
-/*
- * led_3 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_led_3 altera_avalon_pio
-#define LED_3_BASE 0xe0
-#define LED_3_BIT_CLEARING_EDGE_REGISTER 0
-#define LED_3_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define LED_3_CAPTURE 0
-#define LED_3_DATA_WIDTH 8
-#define LED_3_DO_TEST_BENCH_WIRING 0
-#define LED_3_DRIVEN_SIM_VALUE 0
-#define LED_3_EDGE_TYPE "NONE"
-#define LED_3_FREQ 50000000
-#define LED_3_HAS_IN 0
-#define LED_3_HAS_OUT 1
-#define LED_3_HAS_TRI 0
-#define LED_3_IRQ -1
-#define LED_3_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LED_3_IRQ_TYPE "NONE"
-#define LED_3_NAME "/dev/led_3"
-#define LED_3_RESET_VALUE 0
-#define LED_3_SPAN 16
-#define LED_3_TYPE "altera_avalon_pio"
-
-
-/*
- * led_4 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_led_4 altera_avalon_pio
-#define LED_4_BASE 0xd0
-#define LED_4_BIT_CLEARING_EDGE_REGISTER 0
-#define LED_4_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define LED_4_CAPTURE 0
-#define LED_4_DATA_WIDTH 8
-#define LED_4_DO_TEST_BENCH_WIRING 0
-#define LED_4_DRIVEN_SIM_VALUE 0
-#define LED_4_EDGE_TYPE "NONE"
-#define LED_4_FREQ 50000000
-#define LED_4_HAS_IN 0
-#define LED_4_HAS_OUT 1
-#define LED_4_HAS_TRI 0
-#define LED_4_IRQ -1
-#define LED_4_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LED_4_IRQ_TYPE "NONE"
-#define LED_4_NAME "/dev/led_4"
-#define LED_4_RESET_VALUE 0
-#define LED_4_SPAN 16
-#define LED_4_TYPE "altera_avalon_pio"
-
-
-/*
- * led_5 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_led_5 altera_avalon_pio
-#define LED_5_BASE 0xc0
-#define LED_5_BIT_CLEARING_EDGE_REGISTER 0
-#define LED_5_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define LED_5_CAPTURE 0
-#define LED_5_DATA_WIDTH 8
-#define LED_5_DO_TEST_BENCH_WIRING 0
-#define LED_5_DRIVEN_SIM_VALUE 0
-#define LED_5_EDGE_TYPE "NONE"
-#define LED_5_FREQ 50000000
-#define LED_5_HAS_IN 0
-#define LED_5_HAS_OUT 1
-#define LED_5_HAS_TRI 0
-#define LED_5_IRQ -1
-#define LED_5_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LED_5_IRQ_TYPE "NONE"
-#define LED_5_NAME "/dev/led_5"
-#define LED_5_RESET_VALUE 0
-#define LED_5_SPAN 16
-#define LED_5_TYPE "altera_avalon_pio"
-
-
-/*
- * led_6 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_led_6 altera_avalon_pio
-#define LED_6_BASE 0xb0
-#define LED_6_BIT_CLEARING_EDGE_REGISTER 0
-#define LED_6_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define LED_6_CAPTURE 0
-#define LED_6_DATA_WIDTH 8
-#define LED_6_DO_TEST_BENCH_WIRING 0
-#define LED_6_DRIVEN_SIM_VALUE 0
-#define LED_6_EDGE_TYPE "NONE"
-#define LED_6_FREQ 50000000
-#define LED_6_HAS_IN 0
-#define LED_6_HAS_OUT 1
-#define LED_6_HAS_TRI 0
-#define LED_6_IRQ -1
-#define LED_6_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LED_6_IRQ_TYPE "NONE"
-#define LED_6_NAME "/dev/led_6"
-#define LED_6_RESET_VALUE 0
-#define LED_6_SPAN 16
-#define LED_6_TYPE "altera_avalon_pio"
-
-
-/*
- * led_7 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_led_7 altera_avalon_pio
-#define LED_7_BASE 0xa0
-#define LED_7_BIT_CLEARING_EDGE_REGISTER 0
-#define LED_7_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define LED_7_CAPTURE 0
-#define LED_7_DATA_WIDTH 8
-#define LED_7_DO_TEST_BENCH_WIRING 0
-#define LED_7_DRIVEN_SIM_VALUE 0
-#define LED_7_EDGE_TYPE "NONE"
-#define LED_7_FREQ 50000000
-#define LED_7_HAS_IN 0
-#define LED_7_HAS_OUT 1
-#define LED_7_HAS_TRI 0
-#define LED_7_IRQ -1
-#define LED_7_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LED_7_IRQ_TYPE "NONE"
-#define LED_7_NAME "/dev/led_7"
-#define LED_7_RESET_VALUE 0
-#define LED_7_SPAN 16
-#define LED_7_TYPE "altera_avalon_pio"
 
 
 /*
@@ -471,7 +282,7 @@
  */
 
 #define ALT_MODULE_CLASS_sdram_pll altpll
-#define SDRAM_PLL_BASE 0x120
+#define SDRAM_PLL_BASE 0x30
 #define SDRAM_PLL_IRQ -1
 #define SDRAM_PLL_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SDRAM_PLL_NAME "/dev/sdram_pll"
@@ -485,13 +296,13 @@
  */
 
 #define ALT_MODULE_CLASS_sysid_qsys_0 altera_avalon_sysid_qsys
-#define SYSID_QSYS_0_BASE 0x138
+#define SYSID_QSYS_0_BASE 0x58
 #define SYSID_QSYS_0_ID 0
 #define SYSID_QSYS_0_IRQ -1
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1584065952
+#define SYSID_QSYS_0_TIMESTAMP 1584052360
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 #endif /* __SYSTEM_H_ */
