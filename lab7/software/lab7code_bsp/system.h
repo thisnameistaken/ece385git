@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'lab7_soc'
- * SOPC Builder design path: ../../lab7_soc.sopcinfo
+ * SOPC Builder design path: ../../../lab7acc/lab7_soc.sopcinfo
  *
- * Generated: Thu Mar 12 22:21:32 CDT 2020
+ * Generated: Thu Mar 12 22:48:49 CDT 2020
  */
 
 /*
@@ -182,12 +182,66 @@
 
 
 /*
+ * key2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_key2 altera_avalon_pio
+#define KEY2_BASE 0x70
+#define KEY2_BIT_CLEARING_EDGE_REGISTER 0
+#define KEY2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define KEY2_CAPTURE 0
+#define KEY2_DATA_WIDTH 1
+#define KEY2_DO_TEST_BENCH_WIRING 0
+#define KEY2_DRIVEN_SIM_VALUE 0
+#define KEY2_EDGE_TYPE "NONE"
+#define KEY2_FREQ 50000000
+#define KEY2_HAS_IN 1
+#define KEY2_HAS_OUT 0
+#define KEY2_HAS_TRI 0
+#define KEY2_IRQ -1
+#define KEY2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define KEY2_IRQ_TYPE "NONE"
+#define KEY2_NAME "/dev/key2"
+#define KEY2_RESET_VALUE 0
+#define KEY2_SPAN 16
+#define KEY2_TYPE "altera_avalon_pio"
+
+
+/*
+ * key3 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_key3 altera_avalon_pio
+#define KEY3_BASE 0x60
+#define KEY3_BIT_CLEARING_EDGE_REGISTER 0
+#define KEY3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define KEY3_CAPTURE 0
+#define KEY3_DATA_WIDTH 1
+#define KEY3_DO_TEST_BENCH_WIRING 0
+#define KEY3_DRIVEN_SIM_VALUE 0
+#define KEY3_EDGE_TYPE "NONE"
+#define KEY3_FREQ 50000000
+#define KEY3_HAS_IN 1
+#define KEY3_HAS_OUT 0
+#define KEY3_HAS_TRI 0
+#define KEY3_IRQ -1
+#define KEY3_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define KEY3_IRQ_TYPE "NONE"
+#define KEY3_NAME "/dev/key3"
+#define KEY3_RESET_VALUE 0
+#define KEY3_SPAN 16
+#define KEY3_TYPE "altera_avalon_pio"
+
+
+/*
  * led configuration
  *
  */
 
 #define ALT_MODULE_CLASS_led altera_avalon_pio
-#define LED_BASE 0x40
+#define LED_BASE 0x90
 #define LED_BIT_CLEARING_EDGE_REGISTER 0
 #define LED_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LED_CAPTURE 0
@@ -282,7 +336,7 @@
  */
 
 #define ALT_MODULE_CLASS_sdram_pll altpll
-#define SDRAM_PLL_BASE 0x30
+#define SDRAM_PLL_BASE 0xa0
 #define SDRAM_PLL_IRQ -1
 #define SDRAM_PLL_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SDRAM_PLL_NAME "/dev/sdram_pll"
@@ -291,18 +345,45 @@
 
 
 /*
+ * switch configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_switch altera_avalon_pio
+#define SWITCH_BASE 0x80
+#define SWITCH_BIT_CLEARING_EDGE_REGISTER 0
+#define SWITCH_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define SWITCH_CAPTURE 0
+#define SWITCH_DATA_WIDTH 8
+#define SWITCH_DO_TEST_BENCH_WIRING 0
+#define SWITCH_DRIVEN_SIM_VALUE 0
+#define SWITCH_EDGE_TYPE "NONE"
+#define SWITCH_FREQ 50000000
+#define SWITCH_HAS_IN 1
+#define SWITCH_HAS_OUT 0
+#define SWITCH_HAS_TRI 0
+#define SWITCH_IRQ -1
+#define SWITCH_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define SWITCH_IRQ_TYPE "NONE"
+#define SWITCH_NAME "/dev/switch"
+#define SWITCH_RESET_VALUE 0
+#define SWITCH_SPAN 16
+#define SWITCH_TYPE "altera_avalon_pio"
+
+
+/*
  * sysid_qsys_0 configuration
  *
  */
 
 #define ALT_MODULE_CLASS_sysid_qsys_0 altera_avalon_sysid_qsys
-#define SYSID_QSYS_0_BASE 0x58
+#define SYSID_QSYS_0_BASE 0xb8
 #define SYSID_QSYS_0_ID 0
 #define SYSID_QSYS_0_IRQ -1
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1584052360
+#define SYSID_QSYS_0_TIMESTAMP 1584068889
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 #endif /* __SYSTEM_H_ */

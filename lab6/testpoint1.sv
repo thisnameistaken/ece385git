@@ -50,15 +50,18 @@ Continue = 1;	// Toggle Reset
 #2 Run = 0;
 
 
-#10 Run = 1;
+#20 Run = 1;
 
-#10 Continue = 0;
+#2   S = 16'h000B;
 
-#10 Continue = 1;
 
-#10 Continue = 0;
+#20 Continue = 0;
 
-#10 Continue = 1;
+#20 Continue = 1;
+
+#20 Continue = 0;
+
+#20 Continue = 1;
 
 
 

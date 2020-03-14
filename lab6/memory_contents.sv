@@ -27,7 +27,14 @@ task memory_contents(output logic[15:0] mem_array[0:size-1]);
 // Note that if you do this, remember to turn "init_external" in test_memory.sv to 1 for 
 // any of your modifications to take effect.
 
-   mem_array[   0 ] =    opCLR(R0)                ;       // Clear the register so it can be used as a base
+   mem_array[   0 ] =   opANDi(R1, R1, 0)         ;       
+   mem_array[   1 ] =    opADDi(R1, R1, 1)         ;       
+   for (integer i = 2; i <= size - 1; i = i + 1)		// Assign the rest of the memory to 0
+   begin
+       mem_array[i] = 16'h0;
+   end
+
+   /*mem_array[   0 ] =    opCLR(R0)                ;       // Clear the register so it can be used as a base
    mem_array[   1 ] =    opLDR(R1, R0, inSW)      ;       // Load switches
    mem_array[   2 ] =    opJMP(R1)                ;       // Jump to the start of a program
    
@@ -194,12 +201,11 @@ task memory_contents(output logic[15:0] mem_array[0:size-1]);
    mem_array[ 154 ] =    opRET()                  ;       // DISPLAY FUNCTION RETURN
    mem_array[ 155 ] =    opPSE(12'h802)           ;       //    instruction as data
    
-   
    for (integer i = 156; i <= size - 1; i = i + 1)		// Assign the rest of the memory to 0
    begin
        mem_array[i] = 16'h0;
    end
-
+*/
 ///////////// Test code end
 
 endtask

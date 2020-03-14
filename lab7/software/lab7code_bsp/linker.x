@@ -2,9 +2,9 @@
  * linker.x - Linker script
  *
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'lab7_soc'
- * SOPC Builder design path: ../../lab7_soc.sopcinfo
+ * SOPC Builder design path: ../../../lab7acc/lab7_soc.sopcinfo
  *
- * Generated: Thu Mar 12 22:21:32 CDT 2020
+ * Generated: Thu Mar 12 22:48:49 CDT 2020
  */
 
 /*
