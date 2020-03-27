@@ -18,13 +18,13 @@ always_ff @ (posedge Clk)
 begin
     if(Reset)
     begin
-        from_sw_data_out_buffer <= 16'h0000;
-        OTG_ADDR                <= 2'b00;
-        OTG_RD_N                <= 1'b1;
-        OTG_WR_N                <= 1'b1;
-        OTG_CS_N                <= 1'b0;
-        OTG_RST_N               <= 1'b0;
-        from_sw_data_in         <= 16'h0000;
+        from_sw_data_out_buffer <= 16'b0000000000000000;
+        OTG_ADDR                <=  2'b00;
+        OTG_RD_N                <=  1'b1;
+        OTG_WR_N                <=  1'b1;
+        OTG_CS_N                <=  1'b0;
+        OTG_RST_N               <=  1'b0;
+        from_sw_data_in         <= 16'b0000000000000000;
     end
     else 
     begin
@@ -40,6 +40,6 @@ end
 
 // OTG_DATA should be high Z (tristated) when NIOS is not writing to OTG_DATA inout bus.
 // Look at tristate.sv in lab 6 for an example.
-assign OTG_DATA = (~from_sw_w)?(from_sw_data_out_buffer): {16'bZ};
+assign OTG_DATA = (~from_sw_w) ? (from_sw_data_out_buffer): {16'bZ};
 
 endmodule 

@@ -48,16 +48,20 @@ module lab8( input               CLOCK_50,
     
     logic Reset_h, Clk;
     logic [7:0] keycode;
-    
+    logic ResetBall;
+
     assign Clk = CLOCK_50;
     always_ff @ (posedge Clk) begin
         Reset_h <= ~(KEY[0]);        // The push buttons are active low
+        ResetBall <= ~(KEY[1]);      //BALL RESET
     end
     
+
     logic [1:0] hpi_addr;
     logic [15:0] hpi_data_in, hpi_data_out;
     logic hpi_r, hpi_w, hpi_cs, hpi_reset;
-    
+    logic is_ball;
+
     // Interface between NIOS II and EZ-OTG chip
     hpi_io_intf hpi_io_inst(
                             .Clk(Clk),
@@ -108,12 +112,34 @@ module lab8( input               CLOCK_50,
     vga_clk vga_clk_instance(.inclk0(Clk), .c0(VGA_CLK));
     
     // TODO: Fill in the connections for the rest of the modules 
-    VGA_controller vga_controller_instance();
+    VGA_controller vga_controller_instance(.Clk(Clk),         // 50 MHz clock
+                                           .Reset(Reset_h),       // Active-high reset signal
+											.VGA_HS(VGA_HS),      // Horizontal sync pulse.  Active low
+                                           .VGA_VS(VGA_VS),      // Vertical sync pulse.  Active low
+											.VGA_CLK(VGA_CLK),     // 25 MHz VGA clock input
+											.VGA_BLANK_N(VGA_BLANK_N), // Blanking interval indicator.  Active low.
+                                           .VGA_SYNC_N(VGA_SYNC_N),  // Composite Sync signal.  Active low.  We don't use it in this lab,
+																	// but the video DAC on the DE2 board requires an input for it.
+											.DrawX(DrawX),       // horizontal coordinate
+                                           .DrawY(DrawY)        // vertical coordinate
+                        );     
     
     // Which signal should be frame_clk?
-    ball ball_instance();
+    ball ball_instance(
+                        .Clk(Clk),                // 50 MHz clock
+                        .Reset(ResetBall),              // Active-high reset signal
+                        .frame_clk(VGA_VS),          // The clock indicating a new frame (~60Hz)
+                        .DrawX(DrawX), .DrawY(DrawY),       // Current pixel coordinates
+                        .keycodein(keycode),
+                        .is_ball(is_ball)             // Whether current pixel belongs to ball or background
+                        );
     
-    color_mapper color_instance();
+    color_mapper color_instance(
+                                .is_ball(is_ball),            // Whether current pixel belongs to ball 
+                                                              //   or background (computed in ball.sv)
+                                .DrawX(DrawX), .DrawY(DrawY),       // Current pixel coordinates
+                                .VGA_R(VGA_R), .VGA_G(VGA_G), .VGA_B(VGA_B) // VGA RGB output);
+                                );
     
     // Display keycode on hex display
     HexDriver hex_inst_0 (keycode[3:0], HEX0);
@@ -124,5 +150,11 @@ module lab8( input               CLOCK_50,
         Hidden Question #1/2:
         What are the advantages and/or disadvantages of using a USB interface over PS/2 interface to
              connect to the keyboard? List any two.  Give an answer in your Post-Lab.
+
+        Answer:
+            USB is a much more common standard, with a wide variety of devices that use it. Additonally, PS/2 can only connect 
+            a single device in at once while USB supports multiple devices per port. This is useful because you can use a USB hub
+            for multiple devices to connect to one usb port which is not possible with PS/2. Finally, PS/2 only supports HID 
+            while USB also supports data transfer.
     **************************************************************************************/
 endmodule
