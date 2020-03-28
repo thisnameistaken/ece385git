@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+newSoftwareExampleWizardPage.defaultLocation=C\:\\ece385git\\lab7acc\\software\\accu
+newSoftwareExampleWizardPage.sopcinfoFile=C\:\\ece385git\\lab7acc\\lab7_soc.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=C\:\\ece385git\\lab7acc\\software\\accu_bsp

@@ -27,12 +27,18 @@ task memory_contents(output logic[15:0] mem_array[0:size-1]);
 // Note that if you do this, remember to turn "init_external" in test_memory.sv to 1 for 
 // any of your modifications to take effect.
 
+<<<<<<< HEAD
    mem_array[0] = opLDR(R1, R0, inSW);
 	mem_array[   1 ] =   opAND(R1, R1, 0)         ;  
 	mem_array[2] = opSTR(R1, R0, outHEX);
    mem_array[   3 ] =    opADD(R1, R1, 1)         ;  
 	mem_array[4] = opSTR(R1, R0, outHEX);
    for (integer i = 5; i <= size - 1; i = i + 1)		// Assign the rest of the memory to 0
+=======
+   mem_array[   0 ] =  opADDi(R1, R1, 1)         ;  // opANDi(R1, R1, 0)         ;       
+   //mem_array[   1 ] =    opADDi(R1, R1, 1)         ;       
+   for (integer i = 1; i <= size - 1; i = i + 1)		// Assign the rest of the memory to 0
+>>>>>>> da7494580d373f17d9bee67679b4f89446905328
    begin
        mem_array[i] = 16'h0;
    end
