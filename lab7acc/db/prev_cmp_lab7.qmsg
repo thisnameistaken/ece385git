@@ -1,0 +1,13 @@
+{ "Info" "0" "" "qar.tcl version #1" {  } {  } 0 0 "qar.tcl version #1" 0 0 "0" 0 0 1584116679854 ""}
+{ "Info" "0" "" "Including '-use_file_set basic' by default" {  } {  } 0 0 "Including '-use_file_set basic' by default" 0 0 "0" 0 0 1584116680854 ""}
+{ "Info" "0" "" "All project revisions will be stored in common archive lab7_tmp_archive.qar" {  } {  } 0 0 "All project revisions will be stored in common archive lab7_tmp_archive.qar" 0 0 "0" 0 0 1584116680854 ""}
+{ "Info" "0" "" "Initializing files for 'lab7' revision" {  } {  } 0 0 "Initializing files for 'lab7' revision" 0 0 "0" 0 0 1584116681090 ""}
+{ "Info" "0" "" "File Set 'Source control' contains:" { { "Info" "0" "" "Project source and settings files" {  } {  } 0 0 "Project source and settings files" 0 0 "0" 0 0 1584116681122 ""} { "Info" "0" "" "Automatically detected source files" {  } {  } 0 0 "Automatically detected source files" 0 0 "0" 0 0 1584116681122 ""}  } {  } 0 0 "File Set 'Source control' contains:" 0 0 "0" 0 0 1584116681122 ""}
+{ "Warning" "0" "" "Hierarchical Platform Designer systems and custom IP components(_hw.tcl and associated files) are not archived by the Quartus Archiver" {  } {  } 0 0 "Hierarchical Platform Designer systems and custom IP components(_hw.tcl and associated files) are not archived by the Quartus Archiver" 0 0 "0" 0 0 1584116681668 ""}
+{ "Info" "0" "" "Archive will store files relative to the closest common parent directory" {  } {  } 0 0 "Archive will store files relative to the closest common parent directory" 0 0 "0" 0 0 1584116682007 ""}
+{ "Info" "IPRJ_ARC_TCL_TCL_USING_COMMON_DIR" "C:/ece385git/lab7acc/ " "Using common directory C:/ece385git/lab7acc/" {  } {  } 0 13213 "Using common directory %1!s!" 0 0 "Design Software" 0 -1 1584116682078 ""}
+{ "Info" "0" "" "----------------------------------------------------------" {  } {  } 0 0 "----------------------------------------------------------" 0 0 "0" 0 0 1584116682541 ""}
+{ "Info" "0" "" "----------------------------------------------------------" {  } {  } 0 0 "----------------------------------------------------------" 0 0 "0" 0 0 1584116682541 ""}
+{ "Info" "0" "" "Generated archive 'lab7_tmp_archive.qar'" {  } {  } 0 0 "Generated archive 'lab7_tmp_archive.qar'" 0 0 "0" 0 0 1584116682541 ""}
+{ "Info" "0" "" "----------------------------------------------------------" {  } {  } 0 0 "----------------------------------------------------------" 0 0 "0" 0 0 1584116682541 ""}
+{ "Info" "0" "" "----------------------------------------------------------" {  } {  } 0 0 "----------------------------------------------------------" 0 0 "0" 0 0 1584116682541 ""}

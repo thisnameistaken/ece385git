@@ -1,0 +1,8 @@
+21:51:02 **** Incremental Build of configuration Nios II for project lab7code_bsp ****
+make all 
+makefile:510: Warning: BSP Settings File ../../../lab7acc/software/lab7code_bsp/settings.bsp could not be found.
+makefile:529: Warning: SOPC File ../../../lab7acc/lab7_soc.sopcinfo could not be found.
+[BSP build complete]
+
+21:51:03 Build Finished (took 890ms)
+
