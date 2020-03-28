@@ -41,6 +41,7 @@ end
 
 
 initial begin: TEST_VECTORS
+S = 16'h0;
 Run = 1;
 Reset = 0;	
 Continue = 1;	// Toggle Reset
@@ -50,25 +51,10 @@ Continue = 1;	// Toggle Reset
 #2 Run = 0;
 
 
-#20 Run = 1;
+#2 Run = 1;
 
-#2   S = 16'h000B;
+#1 S = 16'hffff;
 
-
-#20 Continue = 0;
-
-#20 Continue = 1;
-
-#20 Continue = 0;
-
-#20 Continue = 1;
-
-
-
-
-	 
-	 
-	
 
 end
 

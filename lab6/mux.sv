@@ -1,4 +1,4 @@
-module twomux_16bit(input logic [15:0] A, B, Select, output logic [15:0] Out);
+module twomux_16bit(input logic [15:0] A, B, input logic Select, output logic [15:0] Out);
 		
 	always_comb 
 		begin
@@ -10,7 +10,7 @@ module twomux_16bit(input logic [15:0] A, B, Select, output logic [15:0] Out);
 		end
 endmodule
 
-module twomux_3bit(input logic [2:0] A, B, Select, output logic [2:0] Out);
+module twomux_3bit(input logic [2:0] A, B, input logic Select, output logic [2:0] Out);
 		
 	always_comb 
 		begin
