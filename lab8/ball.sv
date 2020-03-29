@@ -83,8 +83,25 @@ module  ball ( input         Clk,                // 50 MHz clock
             else if ( Ball_Y_Pos <= Ball_Y_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
                 Ball_Y_Motion_in = Ball_Y_Step;
             // TODO: Add other boundary detections and handle keypress here.
-        
-        
+
+            //X Boundary
+            else if ( Ball_X_Pos <= Ball_X_Min + Ball_Size )  
+                Ball_X_Motion_in = Ball_X_Step;
+
+            else if( Ball_X_Pos + Ball_Size >= Ball_X_Max )  
+                Ball_X_Motion_in = (~(Ball_X_Step) + 1'b1);    // mirror Y code for X
+            
+            //handle keys
+
+            //keycodes:
+            //W: look up later-->
+            //A:
+            //S:
+            //D:
+            //Quake controls nice
+            
+
+
             // Update the ball's position with its motion
             Ball_X_Pos_in = Ball_X_Pos + Ball_X_Motion;
             Ball_Y_Pos_in = Ball_Y_Pos + Ball_Y_Motion;
