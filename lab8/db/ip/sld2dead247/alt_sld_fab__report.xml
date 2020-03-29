@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
+<<<<<<< HEAD
  date="2020.03.28.21:04:48"
  outputDirectory="C:/Users/ATF00/ece385git/lab8/db/ip/sld2dead247/">
+=======
+ date="2020.03.28.19:22:31"
+ outputDirectory="C:/ece385git/lab8/db/ip/sld2dead247/">
+>>>>>>> dca38670c6fd4094efa59fb4fb8e219d71b89233
  <perimeter>
   <parameter
      name="AUTO_DEVICE_FAMILY"

@@ -63,6 +63,8 @@ module lab8( input               CLOCK_50,
     logic hpi_r, hpi_w, hpi_cs, hpi_reset;
     logic is_ball;
 
+    logic [9:0] DrawX, DrawY;        // horizontal coordinate // vertical coordinate
+
     // Interface between NIOS II and EZ-OTG chip
     hpi_io_intf hpi_io_inst(
                             .Clk(Clk),
