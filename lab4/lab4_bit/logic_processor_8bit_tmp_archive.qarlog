@@ -1,0 +1,29 @@
+Quartus Prime Archive log --	C:/ece385git/lab4/lab4_bit/logic_processor_8bit_tmp_archive.qarlog
+
+Archive:	C:/ece385git/lab4/lab4_bit/logic_processor_8bit_tmp_archive.qar
+Date:		Fri Feb 14 12:09:07 2020
+Quartus Prime		18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/ece385git/lab4/lab4_bit/Control.sv
+C:/ece385git/lab4/lab4_bit/HexDriver.sv
+C:/ece385git/lab4/lab4_bit/Processor.sv
+C:/ece385git/lab4/lab4_bit/Reg_8.sv
+C:/ece385git/lab4/lab4_bit/Register_unit.sv
+C:/ece385git/lab4/lab4_bit/Router.sv
+C:/ece385git/lab4/lab4_bit/Synchronizers.sv
+C:/ece385git/lab4/lab4_bit/compute.sv
+C:/ece385git/lab4/lab4_bit/logic_processor_8bit.qpf
+C:/ece385git/lab4/lab4_bit/logic_processor_8bit.qsf
+C:/ece385git/lab4/lab4_bit/testbench.sv
+c:/intelfpga_lite/18.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 12 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Fri Feb 14 12:09:09 2020
+Source archive file:	C:/ece385git/lab4/lab4_bit/logic_processor_8bit_tmp_archive.qar
+Archive was extracted into	C:/ece385git/lab4/lab4_bit_copy/
+		 - successfully.

@@ -1,0 +1,136 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/ece385git/lab4/lab4_adders/simulation/modelsim
+vfour_bit_adder
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1581638726
+!i10b 1
+!s100 ^Df1dzLm`M4d>98[;c7;l3
+IzOYFR_zfDQc9dG5ej10Bc0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 !s105 ripple_adder_sv_unit
+S1
+R0
+Z5 w1581637577
+Z6 8C:/ece385git/lab4/lab4_adders/ripple_adder.sv
+Z7 FC:/ece385git/lab4/lab4_adders/ripple_adder.sv
+L0 23
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1581638726.000000
+Z10 !s107 C:/ece385git/lab4/lab4_adders/ripple_adder.sv|
+Z11 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385git/lab4/lab4_adders|C:/ece385git/lab4/lab4_adders/ripple_adder.sv|
+!i113 1
+Z12 o-sv -work work
+Z13 !s92 -sv -work work +incdir+C:/ece385git/lab4/lab4_adders
+Z14 tCvgOpt 0
+vfull_adder
+R1
+R2
+!i10b 1
+!s100 ld5^QFC4W;NzQPP[>V0jM1
+IfCj`X4Bd??GGEgVcVMBfJ2
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 40
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vHexDriver
+R1
+R2
+!i10b 1
+!s100 =R2i165HPJgkY;aA[TRmG3
+IVoDd^SgmAFIg`l`07nFH=3
+R3
+!s105 hexdriver_sv_unit
+S1
+R0
+Z15 w1581638525
+8C:/ece385git/lab4/lab4_adders/hexdriver.sv
+FC:/ece385git/lab4/lab4_adders/hexdriver.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/ece385git/lab4/lab4_adders/hexdriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385git/lab4/lab4_adders|C:/ece385git/lab4/lab4_adders/hexdriver.sv|
+!i113 1
+R12
+R13
+R14
+n@hex@driver
+vlab4_adders_toplevel
+R1
+!s110 1581638727
+!i10b 1
+!s100 [l@P<8ol1QERCIg9KkP[E2
+I7k5MJH6I0G>Nadk@@]IDQ3
+R3
+!s105 lab4_adders_toplevel_sv_unit
+S1
+R0
+R15
+8C:/ece385git/lab4/lab4_adders/lab4_adders_toplevel.sv
+FC:/ece385git/lab4/lab4_adders/lab4_adders_toplevel.sv
+L0 17
+R8
+r1
+!s85 0
+31
+!s108 1581638727.000000
+!s107 C:/ece385git/lab4/lab4_adders/lab4_adders_toplevel.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ece385git/lab4/lab4_adders|C:/ece385git/lab4/lab4_adders/lab4_adders_toplevel.sv|
+!i113 1
+R12
+R13
+R14
+vripple_adder
+R1
+R2
+!i10b 1
+!s100 ]5l:IDcDjK0_:TSa]21TM1
+IH?Cg7Ylc;CY<Oc;6Pb7dj3
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
