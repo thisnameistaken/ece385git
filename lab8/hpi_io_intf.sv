@@ -22,7 +22,7 @@ begin
         OTG_ADDR                <=  2'b00;
         OTG_RD_N                <=  1'b1;
         OTG_WR_N                <=  1'b1;
-        OTG_CS_N                <=  1'b0;
+        OTG_CS_N                <=  1'b1;
         OTG_RST_N               <=  1'b0;
         from_sw_data_in         <= 16'b0000000000000000;
     end
