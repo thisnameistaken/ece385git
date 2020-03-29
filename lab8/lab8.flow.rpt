@@ -1,5 +1,5 @@
 Flow report for lab8
-Sat Mar 28 18:54:44 2020
+Sat Mar 28 19:22:57 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,17 +40,17 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sat Mar 28 18:54:44 2020       ;
+; Flow Status                        ; Successful - Sat Mar 28 19:22:57 2020       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; lab8                                        ;
 ; Top-level Entity Name              ; lab8                                        ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 3,562                                       ;
-;     Total combinational functions  ; 2,622                                       ;
-;     Dedicated logic registers      ; 2,128                                       ;
-; Total registers                    ; 2128                                        ;
+; Total logic elements               ; 3,570                                       ;
+;     Total combinational functions  ; 2,630                                       ;
+;     Dedicated logic registers      ; 2,129                                       ;
+; Total registers                    ; 2129                                        ;
 ; Total pins                         ; 128                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 11,392                                      ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/28/2020 18:53:14 ;
+; Start date & time ; 03/28/2020 19:21:36 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lab8                ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------+---------------------------------------------------------------+---------------+-----------------+----------------+
 ; Assignment Name                      ; Value                                                         ; Default Value ; Entity Name     ; Section Id     ;
 +--------------------------------------+---------------------------------------------------------------+---------------+-----------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 13528773280212.158544679308792                                ; --            ; --              ; --             ;
+; COMPILER_SIGNATURE_ID                ; 13528773280212.158544849504016                                ; --            ; --              ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                                            ; --            ; --              ; testbench      ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; testbench                                                     ; --            ; --              ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; None                                                          ; --            ; --              ; eda_simulation ;
@@ -112,8 +112,8 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:01:25     ; 1.0                     ; 4954 MB             ; 00:02:01                           ;
-; Total                ; 00:01:25     ; --                      ; --                  ; 00:02:01                           ;
+; Analysis & Synthesis ; 00:01:16     ; 1.0                     ; 4945 MB             ; 00:01:54                           ;
+; Total                ; 00:01:16     ; --                      ; --                  ; 00:01:54                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

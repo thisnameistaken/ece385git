@@ -94,12 +94,73 @@ module  ball ( input         Clk,                // 50 MHz clock
             //handle keys
 
             //keycodes: look up later-->
-            //W:  
-            //A:
-            //S:
-            //D:
+            //W:  1a
+            //A:  04
+            //S:  16
+            //D:  07
             //Quake controls nice
             
+            
+            //W
+            if(keycodein == 8'h1a /*code for W*/)
+            begin
+                //normal
+                Ball_Y_Motion_in = (~(Ball_Y_Step) + 1'b1); //go up
+                Ball_X_Motion_in = 10'd0; //none
+
+                //boundary
+
+                if ( Ball_Y_Pos <= Ball_Y_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
+                Ball_Y_Motion_in = Ball_Y_Step;
+
+            end
+
+            //A
+            if(keycodein == 8'h04 /*code for A*/)
+            begin
+                //normal
+                Ball_X_Motion_in = (~(Ball_X_Step) + 1'b1); //go up
+                Ball_Y_Motion_in = 10'd0; //none
+
+
+                //boundary
+                if ( Ball_X_Pos <= Ball_X_Min + Ball_Size )  
+                Ball_X_Motion_in = Ball_X_Step;
+
+
+            end
+
+
+            //S
+            if(keycodein == 8'h16 /*code for S*/)
+            begin
+                //normal
+                Ball_Y_Motion_in = Ball_Y_Step;
+                Ball_X_Motion_in = 10'd0;
+
+
+                //boundary
+                if( Ball_Y_Pos + Ball_Size >= Ball_Y_Max )  // Ball is at the bottom edge, BOUNCE!
+                Ball_Y_Motion_in = (~(Ball_Y_Step) + 1'b1);  // 2's complement.  
+
+            end
+
+
+            //D
+            if(keycodein == 8'h07 /*code for D*/)
+            begin
+                //normal
+                Ball_X_Motion_in = Ball_X_Step;
+                Ball_Y_Motion_in = 10'd0;
+
+
+                //boundary
+                if( Ball_X_Pos + Ball_Size >= Ball_X_Max )  
+                Ball_X_Motion_in = (~(Ball_X_Step) + 1'b1);    // mirror Y code for X
+
+
+
+            end
 
 
             // Update the ball's position with its motion
