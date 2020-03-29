@@ -6,15 +6,11 @@ module register_unit (input  logic Clk, Reset, x1, x2, Add, Clr_Ld,
                       output logic [7:0]  A,
                       output logic [7:0]  B);
 
-<<<<<<< HEAD
     reg_8  reg_A (.*, .Reset(ClearA || Reset), .Shift_In(X), .Load(Add), .D(Ain[7:0]), .Shift_Out(A_out), .Data_Out(A));
-=======
-    reg_8  reg_A (.*, .Reset(ClearA || Reset), .Shift_In(x2), .Load(Add), .D(Ain[7:0]), .Shift_Out(A_out), .Data_Out(A));
->>>>>>> 256a285b95eb9193ca4b2bb656127b27cb857709
 						
 						
     reg_8  reg_B (.*, .Shift_In(aout), .Load(Clr_Ld), .D(Bin[7:0]), .Shift_Out(B_out), .Data_Out(B));
 	 
 	 reg_1 reg_X(.*, .Load(Add), .D(x1), .Data_Out(X_out));
-
+//ok
 endmodule
