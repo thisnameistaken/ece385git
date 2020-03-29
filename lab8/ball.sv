@@ -90,11 +90,11 @@ module  ball ( input         Clk,                // 50 MHz clock
 
             else if( Ball_X_Pos + Ball_Size >= Ball_X_Max )  
                 Ball_X_Motion_in = (~(Ball_X_Step) + 1'b1);    // mirror Y code for X
-            
+
             //handle keys
 
-            //keycodes:
-            //W: look up later-->
+            //keycodes: look up later-->
+            //W:  
             //A:
             //S:
             //D:
