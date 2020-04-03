@@ -61,11 +61,11 @@ char charsToHex(char c1, char c2)
 
 
 /************************************************************************
-PART 1 FUNCTIONS
-PART 1 FUNCTIONS
-PART 1 FUNCTIONS
-PART 1 FUNCTIONS
-PART 1 FUNCTIONS
+LAB 1 FUNCTIONS
+LAB 1 FUNCTIONS
+LAB 1 FUNCTIONS
+LAB 1 FUNCTIONS
+LAB 1 FUNCTIONS
 BEGIN BEGIN BEGIN BEGIN
 ************************************************************************/
 
@@ -74,36 +74,13 @@ BEGIN BEGIN BEGIN BEGIN
  
 void KeyExpansion(uchar* key, uchar* keySchedule){
 		
-		for(int copyloop =0; copyloop < 16; copyloop++){
+		for(int copyloop =0; copyloop < 16; i++){
 			keySchedule[copyloop] = key[copyloop];
 		}
 		
-		uchar tmp[4];
-		uchar tr;
 
 		for(int i = 16; i < 176; i++){
-			for(int j = 0; j< 4; j++){
-				tmp[j] = keySchedule[i-4 + j];
-			}
 
-			if(!(i%16)){
-				//rotate
-				
-				tr = tmp[0];
-				tmp[0] = tmp[1];
-				tmp[1] = tmp[2];
-				tmp[2] = tmp[3];
-				tmp[3] = tr;
-
-				for(int k = 0; k < 4; k++){
-					tmp[k] = aes_sbox[tmp[k]];
-					tmp[k] ^= Rcon[i/16];
-				}
-			}
-
-			for(int l = 0; l< 4; l++){
-				keySchedule[i] = tmp[l] ^ keySchedule[i-16];
-			}
 		}
 
 };
@@ -126,7 +103,7 @@ void MixColumns(uchar* msg){
 
 	uchar tmp[16];
 
-	for(int copyloop =0; copyloop < 16; copyloop++){
+	for(int copyloop =0; copyloop < 16; i++){
 		tmp[copyloop] =  msg[copyloop];
 	}
 	//make a copy and store in tmp;
@@ -167,7 +144,7 @@ void MixColumns(uchar* msg){
  
 void AddRoundKey(uchar* msg, uchar* curr_key){
 	for(int i = 0; i<16; i++){
-		msg[i] ^= curr_key[i];
+		state[i] ^= curr_key[i];
 	}
 
 };
@@ -235,16 +212,7 @@ void ShiftRows(uchar* msg){
 //please read About AES for reference
 
 //ty KTT ur amazing
-void printer(uchar *msg){
 
-	for(int i = 0; i < 4; i++){
-		for(int j = 0; j< 4; j++){
-			printf("%x ", msg[4*i+j]);
-		}
-	}
-	printf("\n");
-
-};
 
 /** encrypt
  *  Perform AES encryption in software.
@@ -259,20 +227,15 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 	// Implement this function
 };
 
-char* charpoint(uchar* un){
-	char* ret = un;
 
-	return ret;
-	//return a char pointer from unsigned char
-}
 
 /************************************************************************
 END END END END
-PART 1 FUNCTIONS
-PART 1 FUNCTIONS
-PART 1 FUNCTIONS
-PART 1 FUNCTIONS
-PART 1 FUNCTIONS
+LAB 1 FUNCTIONS
+LAB 1 FUNCTIONS
+LAB 1 FUNCTIONS
+LAB 1 FUNCTIONS
+LAB 1 FUNCTIONS
 ************************************************************************/
 
 
