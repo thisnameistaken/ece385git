@@ -71,7 +71,11 @@ BEGIN BEGIN BEGIN BEGIN
 
 
 //uchar is unsigned char
- 
+
+/*Takes the Cipher Key and performs a Key Expansion to generate a
+series of Round Keys (4-Word matrix) and store them into Key
+Schedule.*/
+
 void KeyExpansion(uchar* key, uchar* keySchedule){
 		
 		for(int copyloop =0; copyloop < 16; copyloop++){
@@ -240,6 +244,28 @@ void printer(uchar *msg){
 
 
 };
+/*
+pseudocode 
+
+KeyExpansion(byte key[4*Nk], word w[Nb*(Nr+1)], Nk)
+begin
+word temp
+i = 0
+while (i < Nk)
+ w[i] = word(key[4*i], key[4*i+1], key[4*i+2], key[4*i+3])
+ i = i+1
+end while
+i = Nk
+while (i < Nb * (Nr+1)]
+ temp = w[i-1]
+ if (i mod Nk = 0)
+ temp = SubWord(RotWord(temp)) xor Rcon[i/Nk]
+ end if
+ w[i] = w[i-Nk] xor temp
+ i = i + 1
+end while
+end
+*/
 
 /** encrypt
  *  Perform AES encryption in software.
@@ -280,8 +306,8 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 	AddRoundKey(tmp1,keyS+160);
 
 	for(int j = 0; j< 4; j++){
-		msg_enc[j] = tmp1[4 * j] << 24 + tmp1[4 * j + 1] << 16 + tmp1[4 * j + 2] << 8 + tmp1[4 * j +3];
-		key[j] = tmp0[4 * j] << 24 + tmp0[4 * j + 1] << 16 + tmp0[4 * j + 2] << 8 + tmp0[4 * j +3];    
+		msg_enc[j] = tmp1[4 * j] << 24 | tmp1[4 * j + 1] << 16 | tmp1[4 * j + 2] << 8 | tmp1[4 * j +3];
+		key[j] = tmp0[4 * j] << 24 | tmp0[4 * j + 1] << 16 | tmp0[4 * j + 2] << 8 | tmp0[4 * j +3];    
 	}
 
 };
