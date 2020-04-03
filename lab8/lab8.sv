@@ -49,7 +49,7 @@ module lab8( input               CLOCK_50,
     logic Reset_h, Clk;
     logic [7:0] keycode;
     logic ResetBall;
-	 logic [9:0] DrawX, DrawY;
+	 
 
     assign Clk = CLOCK_50;
     always_ff @ (posedge Clk) begin

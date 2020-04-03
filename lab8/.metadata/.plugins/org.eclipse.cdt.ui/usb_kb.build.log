@@ -1,4 +1,4 @@
-18:52:42 **** Incremental Build of configuration Nios II for project usb_kb ****
+21:06:19 **** Incremental Build of configuration Nios II for project usb_kb ****
 make all 
 Info: Building ../usb_kb_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../usb_kb_bsp/
@@ -11,5 +11,5 @@ io_handler.c:56:2: error: invalid operands to binary * (have 'int' and 'volatile
   ^
 make: *** [obj/default/io_handler.o] Error 1
 
-18:52:44 Build Finished (took 1s.675ms)
+21:06:22 Build Finished (took 2s.917ms)
 

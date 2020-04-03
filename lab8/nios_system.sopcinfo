@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="nios_system" kind="nios_system" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2020.03.27.00:43:58 -->
+ <!-- 2020.04.02.23:01:26 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1585295036</value>
+  <value>1585893686</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -3730,7 +3730,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="internalIrqMaskSystemInfo">
    <type>long</type>
-   <value>1</value>
+   <value>32</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4772,7 +4772,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>jtag_uart_0</moduleName>
     <slaveName>irq</slaveName>
     <name>jtag_uart_0.irq</name>
-    <interruptNumber>0</interruptNumber>
+    <interruptNumber>5</interruptNumber>
    </interrupt>
   </interface>
   <interface name="debug_reset_request" kind="reset_source" version="18.1">
@@ -13745,7 +13745,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1585295036</value>
+   <value>1585893686</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -13765,7 +13765,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1585295036</value>
+   <value>1585893686</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -13781,7 +13781,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1585295036</value>
+   <value>1585893686</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -15515,7 +15515,7 @@ parameters are a RESULT of the module parameters. -->
    end="jtag_uart_0.irq">
   <parameter name="irqNumber">
    <type>int</type>
-   <value>0</value>
+   <value>5</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
