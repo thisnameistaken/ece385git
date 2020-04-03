@@ -234,10 +234,15 @@ void ShiftRows(uchar* msg){
  
 //please read About AES for reference
 
-//all taken from KTT
-
+//ty KTT ur amazing
 void printer(uchar *msg){
 
+	for(int i = 0; i < 4; i++){
+		for(int j = 0; j< 4; j++){
+			printf("%x ", msg[4*i+j]);
+		}
+	}
+	printf("\n");
 
 };
 
@@ -257,31 +262,8 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 	uchar tmp1[16];
 
 	for(int copyloop = 0; copyloop< 16; copyloop++){
-		tmp0[copyloop] = charsToHex(key_ascii[2 * copyloop], key_ascii[2 * copyloop +1]); 
-		tmp1[copyloop] = charsToHex(msg_ascii[2 * copyloop], msg_ascii[2 * copyloop +1]);
-	}
-
-	uchar keyS[176];
-
-	KeyExpansion(tmp0, keyS);
-
-	AddRoundKey(tmp1, keyS);
-
-	for(int i = 0; i< 9; i++){
-		SubByte(tmp1);
-		ShiftRows(tmp1);
-		MixColumns(tmp1);
-		AddRoundKey(tmp1,keyS+16*(i+1));
-
-	}
-
-	SubByte(tmp1);
-	ShiftRows(tmp1);
-	AddRoundKey(tmp1,keyS+160);
-
-	for(int j = 0; j< 4; j++){
-		msg_enc[j] = tmp1[4 * j] << 24 + tmp1[4 * j + 1] << 16 + tmp1[4 * j + 2] << 8 + tmp1[4 * j +3];
-		key[j] = tmp0[4 * j] << 24 + tmp0[4 * j + 1] << 16 + tmp0[4 * j + 2] << 8 + tmp0[4 * j +3];    
+		tmp[copyloop] = charsToHex(msg_ascii[2 * i], msg_ascii[2 * i +1]);
+		tmp1[copyloop] = charsToHex(key_ascii[2 * i], key_ascii[2 * i +1]); 
 	}
 
 };
