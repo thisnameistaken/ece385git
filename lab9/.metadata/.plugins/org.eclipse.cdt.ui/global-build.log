@@ -212,3 +212,123 @@ nios2-elf-objdump --disassemble --syms --all-header --source lab9_aes.elf >lab9_
 02:58:27 **** Build of configuration Nios II for project lab9_aes_bsp ****
 make all 
 [BSP build complete]
+03:50:53 **** Incremental Build of configuration Nios II for project lab9_aes ****
+make all 
+Info: Building ../lab9_aes_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../lab9_aes_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../lab9_aes_bsp//HAL/inc -I../lab9_aes_bsp/ -I../lab9_aes_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+main.c: In function 'charsToHex':
+main.c:32:14: warning: implicit declaration of function 'charToHex' [-Wimplicit-function-declaration]
+  char hex1 = charToHex(c1);
+              ^
+main.c: In function 'KeyExpansion':
+main.c:48:52: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void AES(uchar* keySchedule, uchar* in, uchar* out){
+                                                    ^
+main.c:54:28: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void MixColumns(uchar* msg){
+                            ^
+main.c:60:46: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void AddRoundKey(uchar* msg, uchar* curr_key){
+                                              ^
+main.c:66:25: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void SubByte(uchar* msg){
+                         ^
+main.c:72:27: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void ShiftRows(uchar* msg){
+                           ^
+main.c:123:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+main.c:151:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+main.c:163:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+main.c:172:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+main.c:235:1: error: expected '{' at end of input
+ }
+ ^
+make: *** [obj/default/main.o] Error 1
+03:50:57 **** Incremental Build of configuration Nios II for project lab9_aes_bsp ****
+make all 
+[BSP build complete]
+03:52:59 **** Incremental Build of configuration Nios II for project lab9_aes ****
+make all 
+Info: Building ../lab9_aes_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../lab9_aes_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../lab9_aes_bsp//HAL/inc -I../lab9_aes_bsp/ -I../lab9_aes_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+main.c: In function 'charsToHex':
+main.c:32:14: warning: implicit declaration of function 'charToHex' [-Wimplicit-function-declaration]
+  char hex1 = charToHex(c1);
+              ^
+main.c: In function 'KeyExpansion':
+main.c:48:52: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void AES(uchar* keySchedule, uchar* in, uchar* out){
+                                                    ^
+main.c:54:28: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void MixColumns(uchar* msg){
+                            ^
+main.c:60:46: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void AddRoundKey(uchar* msg, uchar* curr_key){
+                                              ^
+main.c:66:25: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void SubByte(uchar* msg){
+                         ^
+main.c:72:27: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void ShiftRows(uchar* msg){
+                           ^
+main.c:123:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+main.c:151:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+main.c:163:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+main.c:172:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+main.c:235:1: error: expected '{' at end of input
+ }
+ ^
+make: *** [obj/default/main.o] Error 1
+03:53:01 **** Incremental Build of configuration Nios II for project lab9_aes_bsp ****
+make all 
+[BSP build complete]
+03:56:01 **** Incremental Build of configuration Nios II for project lab9_aes ****
+make all 
+Info: Building ../lab9_aes_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../lab9_aes_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../lab9_aes_bsp//HAL/inc -I../lab9_aes_bsp/ -I../lab9_aes_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/main.o main.c
+main.c: In function 'charsToHex':
+main.c:32:14: warning: implicit declaration of function 'charToHex' [-Wimplicit-function-declaration]
+  char hex1 = charToHex(c1);
+              ^
+main.c: At top level:
+main.c:37:6: error: conflicting types for 'charToHex'
+ char charToHex(char c)
+      ^
+main.c:32:14: note: previous implicit declaration of 'charToHex' was here
+  char hex1 = charToHex(c1);
+              ^
+make: *** [obj/default/main.o] Error 1
+03:56:03 **** Incremental Build of configuration Nios II for project lab9_aes_bsp ****
+make all 
+[BSP build complete]
+03:59:25 **** Cleaning Selected Files of configuration Nios II for project lab9_aes ****
+Info: Internal Builder is used for build
+Nothing to clean.
+04:15:21 **** Cleaning Selected Files of configuration Nios II for project lab9_aes ****
+Info: Internal Builder is used for build
+Nothing to clean.

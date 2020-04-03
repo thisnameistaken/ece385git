@@ -11,6 +11,7 @@ University of Illinois ECE Department
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+//#include <stdint.h>
 #include "aes.h"
 
 // Pointer to base address of AES module, make sure it matches Qsys
@@ -18,31 +19,6 @@ volatile unsigned int * AES_PTR = (unsigned int *) 0x00000100;
 
 // Execution mode: 0 for testing, 1 for benchmarking
 int run_mode = 0;
-
-/** charToHex
- *  Convert a single character to the 4-bit value it represents.
- *  
- *  Input: a character c (e.g. 'A')
- *  Output: converted 4-bit value (e.g. 0xA)
- */
-char charToHex(char c)
-{
-	char hex = c;
-
-	if (hex >= '0' && hex <= '9')
-		hex -= '0';
-	else if (hex >= 'A' && hex <= 'F')
-	{
-		hex -= 'A';
-		hex += 10;
-	}
-	else if (hex >= 'a' && hex <= 'f')
-	{
-		hex -= 'a';
-		hex += 10;
-	}
-	return hex;
-}
 
 /** charsToHex
  *  Convert two characters to byte value it represents.
@@ -57,23 +33,10 @@ char charsToHex(char c1, char c2)
 	char hex2 = charToHex(c2);
 	return (hex1 << 4) + hex2;
 }
-
-
-/************************************************************************
-LAB 1 FUNCTIONS
-LAB 1 FUNCTIONS
-LAB 1 FUNCTIONS
-LAB 1 FUNCTIONS
-LAB 1 FUNCTIONS
-BEGIN BEGIN BEGIN BEGIN
-************************************************************************/
-
-
+ 
 //uchar is unsigned char
  
-void KeyExpansion(uchar* key, uchar* keySchedule){
-
-};
+void KeyExpansion(uchar* key, uchar* keySchedule)
  
 //the tutorial uses Nk parameter to achieve flexibilty
  
@@ -84,30 +47,25 @@ void KeyExpansion(uchar* key, uchar* keySchedule){
 
 void AES(uchar* keySchedule, uchar* in, uchar* out){
 
-};
+}
  
 //this is a wrapper function
  
 void MixColumns(uchar* msg){
 
-};
+}
  
 //takes the pointer to the current 4*4 matrix
  
 void AddRoundKey(uchar* msg, uchar* curr_key){
-	for(int i = 0; i<16; i++){
-		state[i] ^= curr_key[i];
-	}
 
-};
+}
  
 //curr_key is corresponding roundkey
  
 void SubByte(uchar* msg){
-	for(int i =0; i < 16; i++){
-		msg[i] = aes_sbox[msg[i]];
-	}
-};
+
+}
  
 //you can choose to subbyte all 16 bytes at once
  
@@ -141,7 +99,7 @@ void ShiftRows(uchar* msg){
 	msg[1] = msg[5];
 	msg[5] = msg[9];
 	msg[9] = msg[13];
-	msg[13] = tmp;
+	msg[13] = msg[1];
 
 	tmp = msg[2];
 	uchar tmp2 = msg[6];
@@ -150,33 +108,35 @@ void ShiftRows(uchar* msg){
 	msg[10] = tmp;
 	msg[14] = tmp2;
 
-	tmp = msg[3];
-	tmp2 = msg[7];
-	uchar tmp3 = msg[11];
-	msg[3] = msg[15];
-	msg[7] = tmp;
-	msg[11] = tmp2;
-	msg[15] = tmp3;
+	tmp = msg[2];
+	tmp2 = msg[6];
 
 
 
-};
+}
  
 //please read About AES for reference
 
 //ty KTT ur amazing
 
+char charToHex(char c)
+{
+	char hex = c;
 
-
-/************************************************************************
-END END END END
-LAB 1 FUNCTIONS
-LAB 1 FUNCTIONS
-LAB 1 FUNCTIONS
-LAB 1 FUNCTIONS
-LAB 1 FUNCTIONS
-************************************************************************/
-
+	if (hex >= '0' && hex <= '9')
+		hex -= '0';
+	else if (hex >= 'A' && hex <= 'F')
+	{
+		hex -= 'A';
+		hex += 10;
+	}
+	else if (hex >= 'a' && hex <= 'f')
+	{
+		hex -= 'a';
+		hex += 10;
+	}
+	return hex;
+}
 
 
 /** encrypt
@@ -190,7 +150,7 @@ LAB 1 FUNCTIONS
 void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int * msg_enc, unsigned int * key)
 {
 	// Implement this function
-};
+}
 
 /** decrypt
  *  Perform AES decryption in hardware.
@@ -202,13 +162,7 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 void decrypt(unsigned int * msg_enc, unsigned int * msg_dec, unsigned int * key)
 {
 	// Implement this function
-};
-
-
-
-
-
-
+}
 
 /** main
  *  Allows the user to enter the message, key, and select execution mode
@@ -269,7 +223,7 @@ int main()
 		double speed = size_KB / time_spent;
 		printf("Software Encryption Speed: %f KB/s \n", speed);
 		// Run Decryption
-		begin = clock();
+		begin = clock()
 		for (i = 0; i < size_KB * 64; i++)
 			decrypt(msg_enc, msg_dec, key);
 		end = clock();
@@ -278,4 +232,4 @@ int main()
 		printf("Hardware Encryption Speed: %f KB/s \n", speed);
 	}
 	return 0;
-};
+}

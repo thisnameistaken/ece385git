@@ -51,6 +51,7 @@ module avalon_aes_interface (
 	logic [127:0] AES_MSG_ENC;
 	logic [127:0] AES_MSG_DEC;
 
+	//adapted from kttech blog for lab9 
 
 	always_ff @ (posedge CLK) begin //:REGISTER_FILE
  
@@ -97,9 +98,9 @@ module avalon_aes_interface (
 
     assign EXPORT_DATA = {register_file[0][15:0] , register_file[3][31:16]};
 
-	/* assign AES_KEY = {register_file[0] , register_file[1] register_file[2] , register_file[3] };
+	 assign AES_KEY = {register_file[0] , register_file[1] register_file[2] , register_file[3] };
 
-	assign AES_MSG_ENC = {register_file[4] , register_file[5] register_file[6] , register_file[7] }; */
+	assign AES_MSG_ENC = {register_file[4] , register_file[5] register_file[6] , register_file[7] }; 
 
 
 
