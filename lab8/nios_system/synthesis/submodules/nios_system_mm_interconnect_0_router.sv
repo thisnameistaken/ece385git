@@ -213,13 +213,13 @@ module nios_system_mm_interconnect_0_router
 
     // ( 0x20 .. 0x30 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 29'h20   ) begin
-            src_channel = 13'b1000000000000;
+            src_channel = 13'b0100000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 8;
     end
 
     // ( 0x30 .. 0x40 )
     if ( {address[RG:PAD2],{PAD2{1'b0}}} == 29'h30   ) begin
-            src_channel = 13'b0100000000000;
+            src_channel = 13'b1000000000000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
     end
 

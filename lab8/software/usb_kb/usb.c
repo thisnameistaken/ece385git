@@ -70,13 +70,9 @@ alt_u16 UsbRead(alt_u16 Address)
 //*************************************************************************//
 //							Write this function							   //
 //*************************************************************************//
-
 	alt_u16 temp;
-
 	IO_write(HPI_ADDR, Address);
-
 	temp = IO_read(HPI_DATA);
-
 	return temp;
 		
 }
@@ -101,7 +97,6 @@ void UsbSoftReset()
 	IO_write(HPI_MAILBOX,COMM_RESET); //COMM_JUMP2CODE
 	usleep(100000);
 	printf("[USB INIT]:reset finished!\n");
-
 	usleep(500000);
 	printf("[USB INIT]:Clear up the interrupt\r\n");
 	IO_read(HPI_MAILBOX);
@@ -114,7 +109,6 @@ void UsbSoftReset()
 	UsbWrite (HPI_SIE1_MSG_ADR, 0);
 	UsbRead (HPI_SIE2_MSG_ADR);
 	UsbWrite (HPI_SIE2_MSG_ADR, 0);
-
 
 	UsbWrite (HOST1_STAT_REG, 0xFFFF);
 	UsbWrite (HOST2_STAT_REG, 0xFFFF);
