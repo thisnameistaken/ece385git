@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Fri Mar 27 01:04:20 PDT 2020
+ * Generated: Fri Apr 03 21:25:21 CDT 2020
  */
 
 /*
@@ -196,7 +196,7 @@
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
 #define JTAG_UART_0_BASE 0xb0
-#define JTAG_UART_0_IRQ 0
+#define JTAG_UART_0_IRQ 5
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
 #define JTAG_UART_0_READ_DEPTH 64
@@ -490,7 +490,7 @@
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1585295036
+#define SYSID_QSYS_0_TIMESTAMP 1585965881
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 #endif /* __SYSTEM_H_ */

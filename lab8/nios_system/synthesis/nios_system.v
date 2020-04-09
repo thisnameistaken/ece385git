@@ -102,16 +102,16 @@ module nios_system (
 	wire   [1:0] mm_interconnect_0_otg_hpi_w_s1_address;                      // mm_interconnect_0:otg_hpi_w_s1_address -> otg_hpi_w:address
 	wire         mm_interconnect_0_otg_hpi_w_s1_write;                        // mm_interconnect_0:otg_hpi_w_s1_write -> otg_hpi_w:write_n
 	wire  [31:0] mm_interconnect_0_otg_hpi_w_s1_writedata;                    // mm_interconnect_0:otg_hpi_w_s1_writedata -> otg_hpi_w:writedata
-	wire         mm_interconnect_0_otg_hpi_cs_s1_chipselect;                  // mm_interconnect_0:otg_hpi_cs_s1_chipselect -> otg_hpi_cs:chipselect
-	wire  [31:0] mm_interconnect_0_otg_hpi_cs_s1_readdata;                    // otg_hpi_cs:readdata -> mm_interconnect_0:otg_hpi_cs_s1_readdata
-	wire   [1:0] mm_interconnect_0_otg_hpi_cs_s1_address;                     // mm_interconnect_0:otg_hpi_cs_s1_address -> otg_hpi_cs:address
-	wire         mm_interconnect_0_otg_hpi_cs_s1_write;                       // mm_interconnect_0:otg_hpi_cs_s1_write -> otg_hpi_cs:write_n
-	wire  [31:0] mm_interconnect_0_otg_hpi_cs_s1_writedata;                   // mm_interconnect_0:otg_hpi_cs_s1_writedata -> otg_hpi_cs:writedata
 	wire         mm_interconnect_0_otg_hpi_reset_s1_chipselect;               // mm_interconnect_0:otg_hpi_reset_s1_chipselect -> otg_hpi_reset:chipselect
 	wire  [31:0] mm_interconnect_0_otg_hpi_reset_s1_readdata;                 // otg_hpi_reset:readdata -> mm_interconnect_0:otg_hpi_reset_s1_readdata
 	wire   [1:0] mm_interconnect_0_otg_hpi_reset_s1_address;                  // mm_interconnect_0:otg_hpi_reset_s1_address -> otg_hpi_reset:address
 	wire         mm_interconnect_0_otg_hpi_reset_s1_write;                    // mm_interconnect_0:otg_hpi_reset_s1_write -> otg_hpi_reset:write_n
 	wire  [31:0] mm_interconnect_0_otg_hpi_reset_s1_writedata;                // mm_interconnect_0:otg_hpi_reset_s1_writedata -> otg_hpi_reset:writedata
+	wire         mm_interconnect_0_otg_hpi_cs_s1_chipselect;                  // mm_interconnect_0:otg_hpi_cs_s1_chipselect -> otg_hpi_cs:chipselect
+	wire  [31:0] mm_interconnect_0_otg_hpi_cs_s1_readdata;                    // otg_hpi_cs:readdata -> mm_interconnect_0:otg_hpi_cs_s1_readdata
+	wire   [1:0] mm_interconnect_0_otg_hpi_cs_s1_address;                     // mm_interconnect_0:otg_hpi_cs_s1_address -> otg_hpi_cs:address
+	wire         mm_interconnect_0_otg_hpi_cs_s1_write;                       // mm_interconnect_0:otg_hpi_cs_s1_write -> otg_hpi_cs:write_n
+	wire  [31:0] mm_interconnect_0_otg_hpi_cs_s1_writedata;                   // mm_interconnect_0:otg_hpi_cs_s1_writedata -> otg_hpi_cs:writedata
 	wire         irq_mapper_receiver0_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
 	wire  [31:0] nios2_gen2_0_irq_irq;                                        // irq_mapper:sender_irq -> nios2_gen2_0:irq
 	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [jtag_uart_0:rst_n, keycode:reset_n, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, otg_hpi_address:reset_n, otg_hpi_cs:reset_n, otg_hpi_data:reset_n, otg_hpi_r:reset_n, otg_hpi_reset:reset_n, otg_hpi_w:reset_n]
