@@ -1,4 +1,4 @@
-05:28:58 **** Incremental Build of configuration Nios II for project lab9_aes ****
+16:54:28 **** Incremental Build of configuration Nios II for project lab9_aes ****
 make all 
 Info: Building ../lab9_aes_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../lab9_aes_bsp/
@@ -8,11 +8,11 @@ nios2-elf-gcc -xc -MP -MMD -c -I../lab9_aes_bsp//HAL/inc -I../lab9_aes_bsp/ -I..
 Info: Linking lab9_aes.elf
 nios2-elf-g++  -T'../lab9_aes_bsp//linker.x' -msys-crt0='../lab9_aes_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../lab9_aes_bsp/   -Wl,-Map=lab9_aes.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o lab9_aes.elf obj/default/main.o -lm -msys-lib=m
 nios2-elf-insert lab9_aes.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --id 0 --sidp 0x58 --timestamp 1585906938 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name lab9_soc --quartus_project_dir "C:/ece385git/lab9" --sopcinfo C:/ece385git/lab9/software/lab9_aes_bsp/../../lab9_soc.sopcinfo
-Info: (lab9_aes.elf) 113 KBytes program size (code + initialized data).
-Info:                130950 KBytes free for stack + heap.
+Info: (lab9_aes.elf) 114 KBytes program size (code + initialized data).
+Info:                130948 KBytes free for stack + heap.
 Info: Creating lab9_aes.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source lab9_aes.elf >lab9_aes.objdump
 [lab9_aes build complete]
 
-05:29:10 Build Finished (took 11s.512ms)
+16:54:36 Build Finished (took 8s.77ms)
 

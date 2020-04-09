@@ -244,6 +244,7 @@ void printer(uchar *msg){
 
 
 };
+
 /*
 pseudocode 
 
